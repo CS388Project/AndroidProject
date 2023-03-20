@@ -8,6 +8,9 @@
 
 ## Overview
 
+### Team Members
+Seif Awan, Kasper Kolasinski, Juan Lopez, Cristhian Molina, Mustafa Damir
+
 ### Description
 
 There are a multitude of competitive games like CS GO, Valorant, League, Apex, etc. that have their own ranking systems. *RankCheck* allows users to track their ranks in these games in real time. The app will allow users to add friends and let everyone see each other's ranks. We hope to create a social experience that will spur a competitive environment throughout the top games that are popular right now.    
