@@ -97,9 +97,7 @@ There are a multitude of competitive games like CS GO, Valorant, League, Apex, e
 
 
 ## Wireframes
-
-[Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="https://github.com/CS388Project/AndroidProject/blob/main/wireframe.png" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
 
