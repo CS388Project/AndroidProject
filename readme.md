@@ -104,4 +104,4 @@ There are a multitude of competitive games like CS GO, Valorant, League, Apex, e
 
 ## Video Walkthroughs
 ### Unit 8 - Sprint Planning:
-<img src='https://i.imgur.com/VecCsEg.gif' title='Sprint Planning' width='' alt='Sprint Planning' />
+<img src='https://i.imgur.com/vj7z2r5.gif' title='Sprint Planning' width='' alt='Sprint Planning' />
