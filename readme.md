@@ -102,6 +102,6 @@ There are a multitude of competitive games like CS GO, Valorant, League, Apex, e
 ## Wireframes
 <img src="https://github.com/CS388Project/AndroidProject/blob/main/wireframe.png" width=600>
 
-### [BONUS] Digital Wireframes & Mockups
-
-### [BONUS] Interactive Prototype
+## Video Walkthroughs
+### Unit 8 - Sprint Planning:
+<img src='https://i.imgur.com/VecCsEg.gif' title='Sprint Planning' width='' alt='Sprint Planning' />
