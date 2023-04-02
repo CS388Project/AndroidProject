@@ -75,17 +75,21 @@
             android:paddingTop="@dimen/_12pxv" android:singleLine="true"
             android:text="@string/lbl_login" android:textAllCaps="true"
             style="@style/btnSolidRounded" tools:text="@string/lbl_login"/>
-        <TextView android:ellipsize="end" android:id="@+id/txtNewUser"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_29pxv"
-            android:layout_marginEnd="@dimen/_27pxh"
+
+        <TextView
+            android:id="@+id/txtNewUser"
+            style="@style/txtMontserratsemibold16"
+            android:layout_width="wrap_content"
+            android:layout_height="23dp"
             android:layout_marginStart="@dimen/_27pxh"
             android:layout_marginTop="@dimen/_91pxv"
-            android:layout_width="wrap_content"
+            android:layout_marginEnd="@dimen/_27pxh"
+            android:layout_marginBottom="@dimen/_29pxv"
+            android:ellipsize="end"
             android:lineSpacingExtra="@dimen/_4pxh"
             android:singleLine="true"
             android:text="@{loginPageVM.loginPageModel.txtNewUser}"
             android:textAllCaps="true"
-            style="@style/txtMontserratsemibold16" tools:text="@string/lbl_new_user"/>
+            tools:text="@string/lbl_new_user" />
     </LinearLayout>
 </layout>

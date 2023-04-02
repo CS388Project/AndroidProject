@@ -17,11 +17,11 @@ class LoginPageActivity : BaseActivity<ActivityLoginPageBinding>(R.layout.activi
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
     binding.loginPageVM = viewModel
-    Handler(Looper.getMainLooper()).postDelayed( {
-      val destIntent = HomePageActivity.getIntent(this, null)
-      startActivity(destIntent)
-      finish()
-      }, 3000)
+//    Handler(Looper.getMainLooper()).postDelayed( {
+//      val destIntent = HomePageActivity.getIntent(this, null)
+//      startActivity(destIntent)
+//      finish()
+//      }, 3000)
     }
 
     override fun setUpClicks(): Unit {
