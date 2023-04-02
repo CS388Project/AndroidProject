@@ -31,7 +31,7 @@
             android:id="@+id/Username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ACTIVITY PAGE"
+            android:hint="Username"
             android:inputType="text"
             android:drawableStart="@drawable/img_user"
             android:singleLine="true"

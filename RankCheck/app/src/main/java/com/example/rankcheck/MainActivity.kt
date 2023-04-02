@@ -1,11 +1,40 @@
 package com.example.rankcheck
 
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_login_page)
+
+        val newUser = findViewById<TextView>(R.id.txtNewUser)
+        val loginBtn = findViewById<Button>(R.id.login_button)
+
+        val username = findViewById<EditText>(R.id.Username)
+        username.setText("")
+        val password = findViewById<EditText>(R.id.password)
+        password.setText("")
+
+        loginBtn.setOnClickListener {
+            username.setText("") // This will wipe, make sure to store data before wiping
+            password.setText("")
+            Toast.makeText(it.context, "Clicked Login Button!", Toast.LENGTH_SHORT).show()
+        }
+
+        newUser.setOnClickListener {
+            setContentView(R.layout.activity_main)
+
+            username.setText("")
+            password.setText("")
+            Toast.makeText(it.context, "Clicked New User!", Toast.LENGTH_SHORT).show()
+        }
     }
+
 }
