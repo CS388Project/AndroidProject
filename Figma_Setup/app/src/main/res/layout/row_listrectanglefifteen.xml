@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="listrectanglefifteenRowModel" type="com.juansapplication.app.modules.gamesearchpage.data.model.ListrectanglefifteenRowModel"/>
+    </data>
+    <LinearLayout android:id="@+id/linearRowrectanglefifteen"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal" style="@style/groupStylebluegray_102">
+        <View android:background="@color/red_700"
+            android:id="@+id/viewRectangleFifteen"
+            android:layout_height="@dimen/_69pxh"
+            android:layout_marginBottom="@dimen/_24pxv"
+            android:layout_marginStart="@dimen/_23pxh"
+            android:layout_marginTop="@dimen/_19pxv" android:layout_width="@dimen/_63pxh"/>
+        <LinearLayout android:gravity="start"
+            android:id="@+id/linearColumngametitle"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_34pxv"
+            android:layout_marginEnd="@dimen/_55pxh"
+            android:layout_marginStart="@dimen/_34pxh"
+            android:layout_marginTop="@dimen/_24pxv"
+            android:layout_weight="0.75" android:layout_width="0dp" android:orientation="vertical">
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtGameTitle"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10pxh"
+                android:layout_width="wrap_content"
+                android:singleLine="true"
+                android:text="@{listrectanglefifteenRowModel.txtGameTitle}"
+                style="@style/txtInterbold12" tools:text="@string/lbl_game_title"/>
+            <TextView android:gravity="center_horizontal"
+                android:id="@+id/txtDescription"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2pxv"
+                android:layout_width="match_parent"
+                android:text="@{listrectanglefifteenRowModel.txtDescription}"
+                style="@style/txtInterbold7" tools:text="@string/msg_lorem_ipsum_dol"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>
