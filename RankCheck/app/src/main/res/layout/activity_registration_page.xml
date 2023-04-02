@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
-        android:id="@+id/linearLoginPage"
+        android:id="@+id/linearRegisterPage"
         style="@style/groupStylebluegray_100"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -25,13 +25,13 @@
             android:layout_height="260dp"
             android:layout_marginEnd="@dimen/_30pxh"
             android:layout_marginStart="@dimen/_30pxh"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             app:srcCompat="@drawable/img_outputonlinepn" />
         <EditText
-            android:id="@+id/Username"
+            android:id="@+id/register_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ACTIVITY PAGE"
+            android:hint="Username"
             android:inputType="text"
             android:drawableStart="@drawable/img_user"
             android:singleLine="true"
@@ -46,11 +46,33 @@
             android:paddingEnd="@dimen/_30pxh"
             android:paddingStart="@dimen/_15pxh"
             android:paddingTop="@dimen/_14pxv"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:drawablePadding="@dimen/_23pxh"
             />
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/confirm_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Confirm Username"
+            android:inputType="text"
+            android:drawableStart="@drawable/img_user"
+            android:singleLine="true"
+            android:textAllCaps="true"
+            android:textColorHint="@color/black_900"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            tools:ignore="Autofill"
+            android:background="@drawable/rectangle_border_black_900_radius_4"
+            android:lineSpacingExtra="@dimen/_4pxh"
+            android:paddingBottom="@dimen/_12pxv"
+            android:paddingEnd="@dimen/_30pxh"
+            android:paddingStart="@dimen/_15pxh"
+            android:paddingTop="@dimen/_14pxv"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="@dimen/_23pxh"
+            />
+        <EditText
+            android:id="@+id/register_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
@@ -68,30 +90,29 @@
             android:paddingEnd="@dimen/_30pxh"
             android:paddingStart="@dimen/_15pxh"
             android:paddingTop="@dimen/_14pxv"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:drawablePadding="@dimen/_23pxh"
             />
 
         <Button
-            android:id="@+id/login_button"
-
+            android:id="@+id/register_button"
             android:layout_gravity="center_horizontal"
-            android:layout_height="@dimen/_45pxv"
+            android:layout_height="@dimen/_48pxv"
             android:layout_marginEnd="@dimen/_30pxh"
             android:layout_marginStart="@dimen/_30pxh"
-            android:layout_marginTop="@dimen/_38pxv"
+            android:layout_marginTop="15dp"
             android:layout_width="@dimen/_177pxh"
             android:lineSpacingExtra="@dimen/_4pxh"
             android:paddingBottom="@dimen/_12pxv"
             android:paddingEnd="@dimen/_30pxh"
             android:paddingStart="@dimen/_30pxh"
             style="@style/btnSolidRounded"
-            android:text="Login" />
+            android:text="Register!" />
         <TextView
             android:id="@+id/txtNewUser"
             android:layout_width="wrap_content"
             android:textColor="@color/blue_800"
-            android:layout_height="23dp"
+            android:layout_height="50dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
@@ -100,8 +121,9 @@
             android:singleLine="true"
             android:textAllCaps="true"
             android:clickable="true"
-            android:text="New User?"
-            tools:text="New User?" />
+            android:focusable="true"
+            android:text="Returning User?"
+            tools:text="Returning User?" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

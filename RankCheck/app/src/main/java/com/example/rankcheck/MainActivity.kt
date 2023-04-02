@@ -17,9 +17,9 @@ class MainActivity : AppCompatActivity() {
         val newUser = findViewById<TextView>(R.id.txtNewUser)
         val loginBtn = findViewById<Button>(R.id.login_button)
 
-        val username = findViewById<EditText>(R.id.Username)
+        val username = findViewById<EditText>(R.id.login_username)
         username.setText("")
-        val password = findViewById<EditText>(R.id.password)
+        val password = findViewById<EditText>(R.id.login_password)
         password.setText("")
 
         loginBtn.setOnClickListener {
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         newUser.setOnClickListener {
-            setContentView(R.layout.activity_main)
+            setContentView(R.layout.activity_registration_page)
 
             username.setText("")
             password.setText("")

@@ -28,7 +28,7 @@
             android:layout_marginTop="50dp"
             app:srcCompat="@drawable/img_outputonlinepn" />
         <EditText
-            android:id="@+id/Username"
+            android:id="@+id/login_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Username"
@@ -50,7 +50,7 @@
             android:drawablePadding="@dimen/_23pxh"
             />
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
@@ -74,9 +74,8 @@
 
         <Button
             android:id="@+id/login_button"
-
             android:layout_gravity="center_horizontal"
-            android:layout_height="@dimen/_45pxv"
+            android:layout_height="@dimen/_49pxv"
             android:layout_marginEnd="@dimen/_30pxh"
             android:layout_marginStart="@dimen/_30pxh"
             android:layout_marginTop="@dimen/_38pxv"
@@ -91,7 +90,7 @@
             android:id="@+id/txtNewUser"
             android:layout_width="wrap_content"
             android:textColor="@color/blue_800"
-            android:layout_height="23dp"
+            android:layout_height="48dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
@@ -100,6 +99,7 @@
             android:singleLine="true"
             android:textAllCaps="true"
             android:clickable="true"
+            android:focusable="true"
             android:text="New User?"
             tools:text="New User?" />
 
