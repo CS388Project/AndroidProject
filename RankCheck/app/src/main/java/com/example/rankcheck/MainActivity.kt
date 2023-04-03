@@ -1,5 +1,6 @@
 package com.example.rankcheck
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -30,11 +31,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         newUser.setOnClickListener {
-            setContentView(R.layout.activity_registration_page) //Change this to intents
-
-            username.setText("")
-            password.setText("")
-            Toast.makeText(it.context, "Clicked New User!", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, Registration::class.java)
+            startActivity(intent)
         }
         //DB Connection Test
         /*
