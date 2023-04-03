@@ -36,22 +36,22 @@ There are a multitude of competitive games like CS GO, Valorant, League, Apex, e
 
 **Required Features**
 
-* Connect their accounts from different games
-* Display Ranking for Chosen Games
-* Add/Remove Friends
-* See Friends Rankings
-* Have a profile page
-
+- [x] Register and Login Functionality
+- [ ] Connect their accounts from different games
+- [ ] Display Ranking for Chosen Games
+- [ ] Add/Remove Friends
+- [ ] See Friends Rankings
+- [ ] Have a profile page
 
 **Stretch Features**
 
-* React/Comment on friends posts/rank updates
-* edit profile page
-* Custimize profile setup
-* Customize app theme (e.g. Light or Dark Mode)
-* Loot boxes/daily prizes for logging in 
-* Advertisements 
-* Two-Factor Authentication
+- [ ] React/Comment on friends posts/rank updates
+- [ ] edit profile page
+- [ ] Custimize profile setup
+- [ ] Customize app theme (e.g. Light or Dark Mode)
+- [ ] Loot boxes/daily prizes for logging in 
+- [ ] Advertisements 
+- [ ] Two-Factor Authentication
 
 
 ### 2. Screen Archetypes
