@@ -109,7 +109,7 @@
             style="@style/btnSolidRounded"
             android:text="Register!" />
         <TextView
-            android:id="@+id/txtNewUser"
+            android:id="@+id/txtRetUser"
             android:layout_width="wrap_content"
             android:textColor="@color/blue_800"
             android:layout_height="50dp"
