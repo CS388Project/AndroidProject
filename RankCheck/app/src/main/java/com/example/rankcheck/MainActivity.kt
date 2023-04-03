@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         newUser.setOnClickListener {
-            setContentView(R.layout.activity_registration_page)
+            setContentView(R.layout.activity_registration_page) //Change this to intents
 
             username.setText("")
             password.setText("")
