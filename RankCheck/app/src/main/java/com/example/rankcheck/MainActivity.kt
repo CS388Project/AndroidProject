@@ -1,15 +1,16 @@
 package com.example.rankcheck
 
-
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-
+import android.util.Log
+import com.parse.ParseObject
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_page)
@@ -29,12 +30,23 @@ class MainActivity : AppCompatActivity() {
         }
 
         newUser.setOnClickListener {
-            setContentView(R.layout.activity_registration_page)
+            setContentView(R.layout.activity_registration_page) //Change this to intents
 
             username.setText("")
             password.setText("")
             Toast.makeText(it.context, "Clicked New User!", Toast.LENGTH_SHORT).show()
         }
+        //DB Connection Test
+        /*
+        val firstObject = ParseObject("FirstClass")
+        firstObject.put("message","another one")
+        firstObject.saveInBackground {
+            if (it != null){
+                it.localizedMessage?.let { message -> Log.e("MainActivity", message) }
+            }else{
+                Log.d("MainActivity","Object saved.")
+            }
+        }*/
     }
 
 }
