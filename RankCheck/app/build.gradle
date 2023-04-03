@@ -3,6 +3,10 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+def connPropertiesFile = rootProject.file("conn.properties")
+def connProperties = new Properties()
+connProperties.load(new FileInputStream(connPropertiesFile))
+
 android {
     namespace 'com.example.rankcheck'
     compileSdk 33
@@ -15,6 +19,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "APP_ID", connProperties['APPLICATION_ID'])
+        buildConfigField("String", "CLIENT_KEY", connProperties['CLIENT_KEY'])
     }
 
     buildTypes {
@@ -41,4 +48,6 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation "com.github.parse-community.Parse-SDK-Android:parse:4.2.0"
+
 }
