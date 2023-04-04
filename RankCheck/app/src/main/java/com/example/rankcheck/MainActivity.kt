@@ -8,7 +8,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
+import com.parse.ParseException
 import com.parse.ParseObject
+import com.parse.ParseQuery
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,16 +20,17 @@ class MainActivity : AppCompatActivity() {
 
         val newUser = findViewById<TextView>(R.id.txtNewUser)
         val loginBtn = findViewById<Button>(R.id.login_button)
-
-        val username = findViewById<EditText>(R.id.login_username)
-        username.setText("")
-        val password = findViewById<EditText>(R.id.login_password)
-        password.setText("")
+        val usernameView = findViewById<EditText>(R.id.login_username)
+        val passwordView = findViewById<EditText>(R.id.login_password)
 
         loginBtn.setOnClickListener {
-            username.setText("") // This will wipe, make sure to store data before wiping
-            password.setText("")
-            Toast.makeText(it.context, "Clicked Login Button!", Toast.LENGTH_SHORT).show()
+            val loggedin = Login.checkLogin(usernameView, passwordView)
+            if(loggedin){
+                setContentView(R.layout.activity_homepage)
+            }
+            else{
+                Toast.makeText(it.context, "Incorrect username or password!", Toast.LENGTH_SHORT).show()
+            }
         }
 
         newUser.setOnClickListener {
