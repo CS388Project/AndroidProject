@@ -1,14 +1,16 @@
 package com.example.rankcheck
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
-import android.widget.Toast
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.parse.ParseException
 import com.parse.ParseObject
+import com.parse.ParseQuery
 
 class Registration : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,24 +34,44 @@ class Registration : AppCompatActivity() {
             }
             //If match, continue with registration
             else{
-                val newUserObject = ParseObject("Users")
-                newUserObject.put("username", regUser.text.toString())
-                newUserObject.put("password", regPass.text.toString())
-                newUserObject.saveInBackground {
-                    if (it != null){
-                        it.localizedMessage?.let { message -> Log.e("Registration", message) }
-                    }else{
-                        Log.d("Registration","Object saved.")
+                val username = regUser.text.toString()
+                val password = regPass.text.toString()
+
+                //Query to find existing username
+                val query = ParseQuery.getQuery<ParseObject>("Users")
+                query.whereContains("username", username)
+                val userFound = query.find()
+
+                //If username not taken, continue with registration
+                if(userFound.isNullOrEmpty()){
+                    val newUserObject = ParseObject("Users")
+                    newUserObject.put("username", username)
+                    newUserObject.put("password", Util.hashPassword(password).toString())
+                    newUserObject.saveInBackground {
+                        if (it != null){
+                            it.localizedMessage?.let { message -> Log.e("Registration", message) }
+                        }else{
+                            Log.d("Registration","User saved.")
+                        }
                     }
+                    regUser.setText("")
+                    regPass.setText("")
+                    regPassConfirm.setText("")
+                    Toast.makeText(this, "Registered New User! Welcome $username!", Toast.LENGTH_LONG).show()
+                    startActivity(intentMain)
                 }
-                regUser.setText("")
-                regPass.setText("")
-                regPassConfirm.setText("")
-                Toast.makeText(this, "Registered New User!", Toast.LENGTH_LONG).show()
-                //startActivity(intentMain)
+                //If username taken, reset
+                else{
+                    regUser.setText("")
+                    regPass.setText("")
+                    regPassConfirm.setText("")
+                    Toast.makeText(this, "Username Taken", Toast.LENGTH_LONG).show()
+                }
             }
+            //Log.d("Pass Hash:", Util.hashPassword(regPass.text.toString()).toString())
         }
 
+        //User clicks on returning user
         retUser.setOnClickListener{
             startActivity(intentMain)
         }
