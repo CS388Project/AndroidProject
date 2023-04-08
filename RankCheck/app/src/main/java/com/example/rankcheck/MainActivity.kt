@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
+import androidx.recyclerview.widget.RecyclerView
 import com.parse.ParseException
 import com.parse.ParseObject
 import com.parse.ParseQuery
@@ -48,6 +49,7 @@ class MainActivity : AppCompatActivity() {
                 Log.d("MainActivity","Object saved.")
             }
         }*/
+
     }
 
 }
