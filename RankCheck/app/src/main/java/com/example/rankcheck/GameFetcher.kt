@@ -7,7 +7,7 @@ class GameFetcher{
         val gameLogo = "@drawable/rectangle_border_black_900_radius_4.xml"
         fun getGames(): MutableList<GamesList> {
             var games : MutableList<GamesList> = ArrayList()
-            for (i in 0..9) {
+            for (i in 0..2) {
                 val game = GamesList(gameTitles[i], gameDescription, gameLogo,)
                 games.add(game)
             }

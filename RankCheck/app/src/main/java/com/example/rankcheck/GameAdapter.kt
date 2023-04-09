@@ -1,5 +1,6 @@
 package com.example.rankcheck
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +22,6 @@ class GameAdapter(private val games: List<GamesList>) : RecyclerView.Adapter<Gam
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        TODO("Not yet implemented")
         val context = parent.context
         val inflater = LayoutInflater.from(context)
         // Inflate the custom layout
@@ -31,12 +31,10 @@ class GameAdapter(private val games: List<GamesList>) : RecyclerView.Adapter<Gam
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
         return games.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("Not yet implemented")
         val game = games.get(position)
         holder.gameTitleTextView.text = game.gameTitle
         holder.gameDescriptionTextView.text = game.gameDescription

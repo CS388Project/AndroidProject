@@ -15,6 +15,8 @@ class GamesRV : AppCompatActivity() {
 
         val gamesRV = findViewById<RecyclerView>(R.id.gamesListRv)
         games = GameFetcher.getGames()
+
+
         val adapter = GameAdapter(games)
 
         gamesRV.adapter = adapter

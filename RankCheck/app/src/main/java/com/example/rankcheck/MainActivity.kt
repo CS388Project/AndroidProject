@@ -23,11 +23,13 @@ class MainActivity : AppCompatActivity() {
         val loginBtn = findViewById<Button>(R.id.login_button)
         val usernameView = findViewById<EditText>(R.id.login_username)
         val passwordView = findViewById<EditText>(R.id.login_password)
-
+        val goal = Intent(this, HomePage::class.java)
         loginBtn.setOnClickListener {
             val loggedin = Login.checkLogin(usernameView, passwordView)
             if(loggedin){
-                setContentView(R.layout.activity_homepage)
+//                setContentView(R.layout.activity_homepage)
+                startActivity(goal)
+
             }
             else{
                 Toast.makeText(it.context, "Incorrect username or password!", Toast.LENGTH_SHORT).show()
