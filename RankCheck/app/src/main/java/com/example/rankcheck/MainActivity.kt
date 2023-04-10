@@ -1,53 +1,55 @@
 package com.example.rankcheck
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import android.util.Log
-import com.parse.ParseException
-import com.parse.ParseObject
-import com.parse.ParseQuery
+import androidx.fragment.app.Fragment
+import com.example.rankcheck.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
-
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login_page)
 
-        val newUser = findViewById<TextView>(R.id.txtNewUser)
-        val loginBtn = findViewById<Button>(R.id.login_button)
-        val usernameView = findViewById<EditText>(R.id.login_username)
-        val passwordView = findViewById<EditText>(R.id.login_password)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        loginBtn.setOnClickListener {
-            val loggedin = Login.checkLogin(usernameView, passwordView)
-            if(loggedin){
-                setContentView(R.layout.activity_homepage)
+        val homeFragment: Fragment = homeFragment()
+        val nav: BottomNavigationView = findViewById(R.id.nav)
+
+        nav.setOnItemSelectedListener { item->
+            lateinit var fragment: Fragment
+            R.id.games
+            when (item.itemId) {
+                R.id.home -> fragment = homeFragment()
+                R.id.games -> fragment = gamesFragment()
+                R.id.search -> fragment = searchFragment()
+                R.id.profile -> fragment = profileFragment()
             }
-            else{
-                Toast.makeText(it.context, "Incorrect username or password!", Toast.LENGTH_SHORT).show()
-            }
+            replaceFragment(fragment)
+            true
         }
 
-        newUser.setOnClickListener {
-            val intent = Intent(this, Registration::class.java)
-            startActivity(intent)
-        }
-        //DB Connection Test
-        /*
-        val firstObject = ParseObject("FirstClass")
-        firstObject.put("message","another one")
-        firstObject.saveInBackground {
-            if (it != null){
-                it.localizedMessage?.let { message -> Log.e("MainActivity", message) }
-            }else{
-                Log.d("MainActivity","Object saved.")
-            }
-        }*/
+        nav.selectedItemId = R.id.home
+    }
+    private fun replaceFragment(articleListFragment: Fragment) {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.MainFrame, articleListFragment)
+        fragmentTransaction.commit()
     }
 
 }
+
+//DB Connection Test
+/*
+val firstObject = ParseObject("FirstClass")
+firstObject.put("message","another one")
+firstObject.saveInBackground {
+    if (it != null){
+        it.localizedMessage?.let { message -> Log.e("MainActivity", message) }
+    }else{
+        Log.d("MainActivity","Object saved.")
+    }
+}*/

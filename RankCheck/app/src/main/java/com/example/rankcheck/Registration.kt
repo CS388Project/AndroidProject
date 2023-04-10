@@ -18,6 +18,7 @@ class Registration : AppCompatActivity() {
         setContentView(R.layout.activity_registration_page)
 
         val intentMain = Intent(this, MainActivity::class.java)
+        val intentLogin = Intent(this, LoginPage::class.java)
 
         var regUser = findViewById<EditText>(R.id.register_username)
         var regPass = findViewById<EditText>(R.id.register_password)
@@ -59,6 +60,7 @@ class Registration : AppCompatActivity() {
                     regPassConfirm.setText("")
                     Toast.makeText(this, "Registered New User! Welcome $username!", Toast.LENGTH_LONG).show()
                     startActivity(intentMain)
+                    finish()
                 }
                 //If username taken, reset
                 else{
@@ -73,7 +75,8 @@ class Registration : AppCompatActivity() {
 
         //User clicks on returning user
         retUser.setOnClickListener{
-            startActivity(intentMain)
+            startActivity(intentLogin)
+            finish()
         }
     }
 }
