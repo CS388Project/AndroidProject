@@ -22,6 +22,9 @@
             android:name=".GamesRV"
             android:exported="true" />
         <activity
+            android:name=".DetailActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
         </activity>

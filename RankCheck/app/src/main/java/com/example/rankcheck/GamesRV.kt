@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class GamesRV : AppCompatActivity() {
-    lateinit var games: List<GamesList>
+    lateinit var games: MutableList<DisplayGame>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,7 +17,7 @@ class GamesRV : AppCompatActivity() {
         games = GameFetcher.getGames()
 
 
-        val adapter = GameAdapter(games)
+        val adapter = GameAdapter(this, games)
 
         gamesRV.adapter = adapter
 

@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 class gamesFragment: Fragment()  {
     lateinit var gamesRV: RecyclerView
+    lateinit var games: MutableList<DisplayGame>
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -21,8 +23,8 @@ class gamesFragment: Fragment()  {
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
         gamesRV = itemView.findViewById(R.id.gamesFragmentListRv)
-        val games = GameFetcher.getGames()
-        val adapter = GameAdapter(games)
+        games = GameFetcher.getGames()
+        val adapter = activity?.let { GameAdapter(it, games) }
         gamesRV.adapter = adapter
         gamesRV.layoutManager = LinearLayoutManager(activity)
 

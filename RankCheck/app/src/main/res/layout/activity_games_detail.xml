@@ -5,13 +5,103 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/gameImage2"
+        android:layout_width="98dp"
+        android:layout_height="103dp"
+        android:layout_marginStart="16dp"
+        android:contentDescription="image"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.041"
+        app:layout_constraintWidth_percent=".35"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <EditText
+        android:id="@+id/login_username"
+        android:layout_width="397dp"
+        android:layout_height="49dp"
+        android:background="@drawable/rectangle_border_black_900_radius_4"
+        android:drawableStart="@drawable/img_user"
+        android:drawablePadding="@dimen/_23pxh"
+        android:hint="Username"
+        android:inputType="text"
+        android:lineSpacingExtra="@dimen/_4pxh"
+        android:paddingStart="@dimen/_15pxh"
+        android:paddingTop="@dimen/_14pxv"
+        android:paddingEnd="@dimen/_30pxh"
+        android:paddingBottom="@dimen/_12pxv"
+        android:singleLine="true"
+        android:textAllCaps="true"
+        android:textColorHint="@color/black_900"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="Autofill" />
+
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/gameDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Game Detail to link goes here"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.154" />
+
+    <Button
+        android:id="@+id/RemoeBtn"
+        android:layout_width="159dp"
+        android:layout_height="48dp"
+        android:text="Remove Game"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.945"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+    <TextView
+        android:id="@+id/gameTitle"
+        android:layout_width="139dp"
+        android:layout_height="18dp"
+        android:text="Game Name"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.127" />
+
+    <CheckBox
+        android:id="@+id/Consent"
+        android:layout_width="321dp"
+        android:layout_height="48dp"
+        android:text="I consent to RankCheck to acess my data"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_username"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="146dp"
+        android:layout_height="56dp"
+        android:text="Link Game"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Consent"
+        app:layout_constraintVertical_bias="0.379" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
