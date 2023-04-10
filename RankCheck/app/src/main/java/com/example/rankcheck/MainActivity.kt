@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
         nav.setOnItemSelectedListener { item->
             lateinit var fragment: Fragment
+            R.id.games
             when (item.itemId) {
                 R.id.home -> fragment = homeFragment()
                 R.id.games -> fragment = gamesFragment()
