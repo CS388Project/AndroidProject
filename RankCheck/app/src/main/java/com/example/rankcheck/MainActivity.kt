@@ -1,6 +1,7 @@
 package com.example.rankcheck
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.rankcheck.databinding.ActivityMainBinding
@@ -8,8 +9,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    companion object{
+        lateinit var SESSION_USER : String
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //USERNAME GRABBING
+        SESSION_USER = intent.getStringExtra("SESSION_USER").toString()
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root

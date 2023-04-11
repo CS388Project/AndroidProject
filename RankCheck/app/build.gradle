@@ -22,6 +22,8 @@ android {
 
         buildConfigField("String", "APP_ID", connProperties['APPLICATION_ID'])
         buildConfigField("String", "CLIENT_KEY", connProperties['CLIENT_KEY'])
+        buildConfigField("String", "RAPID_KEY", connProperties['RAPID_KEY'])
+        buildConfigField("String", "LEAGUE_HOST", connProperties['LEAGUE_HOST'])
     }
 
     buildTypes {
@@ -59,4 +61,5 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation "com.github.parse-community.Parse-SDK-Android:parse:4.2.0"
+    implementation 'com.codepath.libraries:asynchttpclient:2.2.0'
 }
