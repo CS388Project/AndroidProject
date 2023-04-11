@@ -16,9 +16,6 @@ object Login {
         query.whereContains("username", username).whereContains("password", password)
         val loggedUser = query.find()
 
-        usernameView.setText("") // This will wipe, make sure to store data before wiping
-        passwordView.setText("")
-
         if(loggedUser.isNullOrEmpty()){
             return false
         }

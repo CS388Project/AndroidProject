@@ -2,6 +2,7 @@ package com.example.rankcheck
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -23,12 +24,15 @@ class LoginPage : AppCompatActivity() {
         loginBtn.setOnClickListener {
             val loggedin = Login.checkLogin(usernameView, passwordView)
             if(loggedin){
+                intentMain.putExtra("SESSION_USER", usernameView.text.toString())
                 startActivity(intentMain)
                 finish()
             }
             else{
                 Toast.makeText(it.context, "Incorrect username or password!", Toast.LENGTH_SHORT).show()
             }
+            usernameView.setText("") // This will wipe, make sure to store data before wiping
+            passwordView.setText("")
         }
 
         newUser.setOnClickListener {

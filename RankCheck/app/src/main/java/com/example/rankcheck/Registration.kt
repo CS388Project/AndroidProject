@@ -59,6 +59,7 @@ class Registration : AppCompatActivity() {
                     regPass.setText("")
                     regPassConfirm.setText("")
                     Toast.makeText(this, "Registered New User! Welcome $username!", Toast.LENGTH_LONG).show()
+                    intentMain.putExtra("SESSION_USER", username)
                     startActivity(intentMain)
                     finish()
                 }
