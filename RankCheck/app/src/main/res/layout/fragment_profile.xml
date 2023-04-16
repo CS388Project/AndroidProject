@@ -11,7 +11,7 @@
         android:id="@+id/rowUser"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-
+        android:layout_marginTop="40dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,6 +29,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+
             android:layout_marginTop="40dp"
             android:layout_marginLeft="20dp">
             <TextView
@@ -47,39 +48,62 @@
                 />
         </LinearLayout>
      </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Friends"
+        app:layout_constraintTop_toBottomOf="@+id/rowUser"
+        app:layout_constraintBottom_toTopOf="@id/rowFriends"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
     <LinearLayout
         android:id="@+id/rowFriends"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rowUser">
+        app:layout_constraintTop_toBottomOf="@id/rowUser"
+        android:layout_marginTop="50dp">
 
         <ImageView
             android:id="@+id/imageFriend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_launcher_background"
-            android:padding="20dp"
-            />
+            android:padding="20dp"/>
 
-    <!--        https://www.geeksforgeeks.org/android-horizontal-recyclerview-with-examples/-->
+    <!--        https://www.geeksforgeeks.org/android-horizontal-recyclerview-with-examples/ -->
     </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Games"
+        app:layout_constraintTop_toBottomOf="@+id/rowFriends"
+        app:layout_constraintBottom_toTopOf="@id/rowGames"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
     <LinearLayout
         android:id="@+id/rowGames"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rowFriends">
+        app:layout_constraintTop_toBottomOf="@id/rowFriends"
+        android:layout_marginTop="50dp">
 
-        <ImageView
-            android:id="@+id/imageGames"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/friendsListRv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_launcher_background"
-            android:padding="20dp"
-            />
+            android:scrollbars="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
 
         <!--        https://www.geeksforgeeks.org/android-horizontal-recyclerview-with-examples/-->
     </LinearLayout>
