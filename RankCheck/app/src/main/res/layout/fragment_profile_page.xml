@@ -47,7 +47,7 @@
                 android:layout_margin="10dp"
                 />
         </LinearLayout>
-     </LinearLayout>
+    </LinearLayout>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
             android:src="@drawable/ic_launcher_background"
             android:padding="20dp"/>
 
-    <!--        https://www.geeksforgeeks.org/android-horizontal-recyclerview-with-examples/ -->
+        <!--        https://www.geeksforgeeks.org/android-horizontal-recyclerview-with-examples/ -->
     </LinearLayout>
     <TextView
         android:layout_width="wrap_content"
