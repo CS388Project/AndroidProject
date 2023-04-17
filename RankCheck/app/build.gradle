@@ -23,7 +23,7 @@ android {
         buildConfigField("String", "APP_ID", connProperties['APPLICATION_ID'])
         buildConfigField("String", "CLIENT_KEY", connProperties['CLIENT_KEY'])
         buildConfigField("String", "RAPID_KEY", connProperties['RAPID_KEY'])
-        buildConfigField("String", "LEAGUE_HOST", connProperties['LEAGUE_HOST'])
+        buildConfigField("String", "TRACKERGG_KEY", connProperties['TRACKERGG_KEY'])
     }
 
     buildTypes {
