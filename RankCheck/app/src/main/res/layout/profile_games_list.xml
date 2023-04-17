@@ -10,7 +10,7 @@
     <!--Card View widget-->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         app:contentPadding="15dp"
         app:cardCornerRadius="8dp"
@@ -20,12 +20,12 @@
         >
         <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <!--Text View over Card View-->
         <ImageView
             android:id="@+id/gameImage"
-            android:layout_width="wrap_content"
+            android:layout_width="75dp"
             android:layout_height="100dp"
             android:scaleType="centerInside"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -46,7 +46,6 @@
             android:maxLines="2"
             android:text="Title"
             android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/gameImage"
             app:layout_constraintTop_toTopOf="@+id/gameImage" />
 
@@ -61,7 +60,6 @@
             android:maxLines="4"
             android:text="Abstract"
             android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/gameImage"
             app:layout_constraintTop_toBottomOf="@+id/gameTitle" />
         </androidx.constraintlayout.widget.ConstraintLayout>
