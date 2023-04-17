@@ -32,7 +32,7 @@ class profileFragment: Fragment()  {
 
         gamesRV = itemView.findViewById(R.id.gamesListRV)
         games = GameFetcher.getGames()
-        val game_adapter = activity?.let { GameAdapter(it, games) }
+        val game_adapter = activity?.let { GameCardViewAdapter(it, games) }
         gamesRV.adapter = game_adapter
         gamesRV.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 

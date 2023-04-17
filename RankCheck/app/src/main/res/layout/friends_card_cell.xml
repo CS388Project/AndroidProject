@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="15dp"
+    android:layout_marginLeft="10dp">
 <!--Card View widget-->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -12,7 +14,7 @@
         android:layout_height="wrap_content"
         app:contentPadding="15dp"
         app:cardCornerRadius="8dp"
-        app:cardElevation="40dp"
+        app:cardElevation="20dp"
         app:cardBackgroundColor="#E7E0D3"
         android:layout_margin="10dp"
         >
@@ -28,7 +30,7 @@
             android:id="@+id/friendName"
             android:layout_gravity="center_vertical"
             android:layout_marginTop="4dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginBottom="4dp"
             android:textSize="30px"
             android:text="Friend Username"
