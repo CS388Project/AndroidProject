@@ -1,5 +1,6 @@
 package com.example.rankcheck
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -42,7 +43,12 @@ class GameCardViewAdapter(private val context: FragmentActivity, private val gam
         }
 
         override fun onClick(p0: View?) {
-            Log.e("Click","clicked!")
+            val game = games[adapterPosition]
+
+            //  Navigate to Details screen and pass selected article
+            val intent = Intent(context, DetailActivity::class.java)
+            intent.putExtra(GAME_EXTRA, game)
+            context.startActivity(intent)
         }
     }
 

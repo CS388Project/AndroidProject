@@ -1,6 +1,8 @@
 package com.example.rankcheck;
 
 import android.util.Log
+import com.parse.ParseObject
+import com.parse.ParseQuery
 
 class FriendFetcher {
     companion object{
@@ -11,14 +13,20 @@ class FriendFetcher {
             R.drawable.img_user,
             R.drawable.img_user,
             R.drawable.img_user)
-        fun getFriends(): MutableList<FriendsList> {
-            var friends : MutableList<FriendsList> = ArrayList()
-            for (i in 0..4) {
-                val friend = FriendsList(friendsNames[i], friendPFP[i])
-                Log.e("Friend:", friendsNames[i])
-                friends.add(friend)
+        fun getFriends(username: String): MutableList<ParseObject>? {
+            val query = ParseQuery.getQuery<ParseObject>("Friends")
+            val username = username.toString()
+
+            query.whereContains("username", username)
+            val friends = query.find()
+
+            if(friends.isNullOrEmpty()){
+                //can't return anything
             }
-            return friends
-        }
+            else{
+                Log.d(Companion.TAG, "List: $friends")
+                return friends
+            }
+
     }
 }

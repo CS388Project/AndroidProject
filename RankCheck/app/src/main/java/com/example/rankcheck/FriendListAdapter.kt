@@ -12,8 +12,11 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.rankcheck.databinding.FriendsCardCellBinding
-import com.example.rankcheck.databinding.FriendsDetailBinding
+import com.example.rankcheck.databinding.ActivityFriendsDetailBinding
+import com.parse.ParseObject
 
+const val FRIEND_EXTRA = "FRIEND_EXTRA"
+private const val TAG = "FriendListAdapter"
 class FriendListAdapter(private val context: FragmentActivity, private val friends: MutableList<FriendsList>) : RecyclerView.Adapter<CardViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         val from = LayoutInflater.from(parent.context)
@@ -42,7 +45,12 @@ class FriendListAdapter(private val context: FragmentActivity, private val frien
         }
 
         override fun onClick(p0: View?) {
-            Log.e("Click","clicked!")
+            val friend = friends[adapterPosition]
+
+            //  Navigate to Details screen and pass selected article
+            val intent = Intent(context, DetailActivity::class.java)
+            intent.putExtra(FRIEND_EXTRA, friend)
+            context.startActivity(intent)
         }
     }
 

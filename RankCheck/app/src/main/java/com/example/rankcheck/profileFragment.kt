@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.rankcheck.MainActivity.Companion.SESSION_USER
+import com.parse.ParseObject
+
 class profileFragment: Fragment()  {
     lateinit var friendsRV: RecyclerView
     private lateinit var friends: MutableList<FriendsList>
@@ -23,7 +26,7 @@ class profileFragment: Fragment()  {
         super.onViewCreated(itemView, savedInstanceState)
 
         friendsRV = itemView.findViewById(R.id.friendsListRV)
-        friends = FriendFetcher.getFriends()
+        friends = FriendFetcher.getFriends(SESSION_USER)
         val adapter2 = activity?.let { FriendListAdapter(it, friends) }
 //        val adapter = FriendListAdapter(it, friendsList)
         friendsRV.adapter = adapter2
