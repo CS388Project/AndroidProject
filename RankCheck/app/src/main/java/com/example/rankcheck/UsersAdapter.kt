@@ -11,8 +11,6 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-const val USER_EXTRA = "USER_EXTRA"
-
 class UsersAdapter(private val context: FragmentActivity, private val users: MutableList<DisplayUser>) : RecyclerView.Adapter<UsersAdapter.ViewHolder>(){
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.users_lists, viewGroup, false)
@@ -39,10 +37,10 @@ class UsersAdapter(private val context: FragmentActivity, private val users: Mut
         }
 
         override fun onClick(p0: View?) {
-            val user = users[adapterPosition]
+            val user = users[adapterPosition].username
 
-            val intent = Intent(context, LoginPage::class.java)
-            intent.putExtra(USER_EXTRA, user)
+            val intent = Intent(context, UserDetail::class.java)
+            intent.putExtra("USER_EXTRA", user)
             context.startActivity(intent)
         }
     }
