@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -44,7 +45,7 @@ class GameCardViewAdapter(private val context: FragmentActivity, private val gam
 
         override fun onClick(p0: View?) {
             val game = games[adapterPosition]
-
+            Log.e("X", "Clicked")
             //  Navigate to Details screen and pass selected article
             val intent = Intent(context, DetailActivity::class.java)
             intent.putExtra(GAME_EXTRA, game)

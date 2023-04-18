@@ -78,6 +78,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:clickable="true"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"/>
 

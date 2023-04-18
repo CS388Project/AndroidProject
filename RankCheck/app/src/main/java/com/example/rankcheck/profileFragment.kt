@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -42,7 +43,12 @@ class profileFragment: Fragment()  {
 
         friendsRV = itemView.findViewById(R.id.friendsListRV)
         friends = FriendFetcher.getFriends(SESSION_USER)
-        val adapter2 = activity?.let { FriendListAdapter(it, friends) }
+        val adapter2 = FriendListAdapter(context,friends,object:FriendListAdapter.SetOnItemClickListener{
+            override fun onItemClick() {
+                Toast.makeText(context,"hey...",Toast.LENGTH_LONG).show()
+
+            }
+        })
 //        val adapter = FriendListAdapter(it, friendsList)
         friendsRV.adapter = adapter2
         friendsRV.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
