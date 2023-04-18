@@ -43,6 +43,7 @@ class Registration : AppCompatActivity() {
                 query.whereContains("username", username)
                 val userFound = query.find()
 
+
                 //If username not taken, continue with registration
                 if(userFound.isNullOrEmpty()){
                     val newUserObject = ParseObject("Users")

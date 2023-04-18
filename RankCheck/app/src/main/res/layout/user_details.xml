@@ -4,14 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".profileFragment">
+    >
 
     <!-- TODO: Update blank fragment layout -->
+
     <LinearLayout
-        android:id="@+id/rowUser"
+        android:id="@+id/rowUserdetail"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="68dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -19,14 +20,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageUser"
+            android:id="@+id/imageUserdetail"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:padding="20dp"
             android:src="@drawable/ic_launcher_background" />
 
         <LinearLayout
-            android:id="@+id/nameBio"
+            android:id="@+id/nameBiodetail"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -35,36 +36,34 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/username"
+                android:id="@+id/usernamedetail"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:text="Name" />
 
             <TextView
-                android:id="@+id/userBio"
+                android:id="@+id/userBiodetail"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:text="Bio" />
-
         </LinearLayout>
-
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/rowGamesRV"
+        android:id="@+id/rowGamesRVdetail"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/GamesText">
+        app:layout_constraintTop_toBottomOf="@id/GamesTextdetail">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/gamesListRV"
+            android:id="@+id/gamesListRVdetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -73,23 +72,23 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/GamesText" />
+            app:layout_constraintTop_toBottomOf="@id/GamesTextdetail" />
 
         <!--        https://www.geeksforgeeks.org/android-horizontal-recyclerview-with-examples/-->
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/rowFriendsRV"
+        android:id="@+id/rowFriendsRVdetail"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        app:layout_constraintBottom_toTopOf="@id/GamesText"
+        app:layout_constraintBottom_toTopOf="@id/GamesTextdetail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/FriendsText">
+        app:layout_constraintTop_toBottomOf="@id/FriendsTextdetail">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/friendsListRV"
+            android:id="@+id/friendsListRVdetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -104,81 +103,38 @@
     </LinearLayout>
 
     <TextView
-        android:paddingTop="10dp"
+        android:id="@+id/GamesTextdetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Friends"
-        android:id="@+id/FriendsText"
-        app:layout_constraintTop_toBottomOf="@+id/rowUser"
-        app:layout_constraintBottom_toTopOf="@id/rowFriendsRV"
-        app:layout_constraintStart_toStartOf="parent"
+        android:paddingTop="10dp"
+        android:text="Games"
+        app:layout_constraintBottom_toTopOf="@id/rowGamesRVdetail"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rowFriendsRVdetail" />
 
     <TextView
-        android:id="@+id/GamesText"
+        android:id="@+id/FriendsTextdetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Games"
-        app:layout_constraintTop_toBottomOf="@+id/rowFriendsRV"
-        app:layout_constraintBottom_toTopOf="@id/rowGamesRV"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:paddingTop="10dp"
-        />
+        android:text="Friends"
+        app:layout_constraintBottom_toTopOf="@id/rowFriendsRVdetail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rowUserdetail" />
 
     <Button
-        android:id="@+id/addbutton"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginEnd="16dp"
+        android:id="@+id/addfrienddetail"
+        android:layout_width="86dp"
+        android:layout_height="43dp"
         android:layout_weight="1"
-        android:background="@drawable/baseline_add_24"
-        app:layout_constraintBottom_toTopOf="@+id/rowUser"
-        app:layout_constraintEnd_toStartOf="@+id/removebutton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.38" />
-
-    <Button
-        android:id="@+id/removebutton"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_weight="1"
-        android:background="@drawable/baseline_remove_24"
+        android:text="Add"
+        app:layout_constraintBottom_toTopOf="@+id/rowUserdetail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="34dp"
-        android:layout_height="21dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="4dp"
-        android:text="add"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/rowUser"
-        app:layout_constraintEnd_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/addbutton"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="53dp"
-        android:layout_height="21dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="4dp"
-        android:text="remove"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/rowUser"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/removebutton"
-        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
