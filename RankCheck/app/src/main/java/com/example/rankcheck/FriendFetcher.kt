@@ -13,20 +13,19 @@ class FriendFetcher {
             R.drawable.img_user,
             R.drawable.img_user,
             R.drawable.img_user)
-        fun getFriends(username: String): MutableList<ParseObject>? {
+        fun getFriends(username: String): MutableList<FriendsList> {
             val query = ParseQuery.getQuery<ParseObject>("Friends")
             val username = username.toString()
 
             query.whereContains("username", username)
-            val friends = query.find()
+            val ParseFriends = query.find()
 
-            if(friends.isNullOrEmpty()){
-                //can't return anything
+            var friends = mutableListOf<FriendsList>()
+            for(ParseFriend in ParseFriends){
+                var newFriend = FriendsList(ParseFriend.getString("friendUsername"), R.drawable.img_user)
+                friends.add(newFriend)
             }
-            else{
-                Log.d(Companion.TAG, "List: $friends")
-                return friends
-            }
-
+            return friends
+        }
     }
 }
