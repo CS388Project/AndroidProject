@@ -27,7 +27,6 @@ class gamesFragment: Fragment()  {
         val adapter = activity?.let { GameAdapter(it, games) }
         gamesRV.adapter = adapter
         gamesRV.layoutManager = LinearLayoutManager(activity)
-
     }
 
 }
