@@ -37,11 +37,13 @@ There are a multitude of competitive games like CS GO, Valorant, League, Apex, e
 **Required Features**
 
 - [x] Register and Login Functionality
-- [x] Connect their accounts from different games (1 of 3)
+- [x] Connect their accounts from different games (3 of 3)
+    - [x] Allow game link removal
 - [ ] Display Ranking for Chosen Games
 - [ ] Add/Remove Friends
 - [ ] See Friends Rankings
-- [ ] Have a profile page
+- [x] Have a profile page
+- [x] Search for users
 
 **Stretch Features**
 
@@ -111,3 +113,6 @@ There are a multitude of competitive games like CS GO, Valorant, League, Apex, e
 
 ### Unit 10 - Sprint 2:
 <img src='https://i.imgur.com/935X5qa.gif' title='Sprint 2' width='' alt='Sprint 2' />
+
+### Unit 11 - Sprint 3:
+<img src='https://i.imgur.com/jnMp1UE.gif' title='Sprint 3' width='' alt='Sprint 3' />
