@@ -1,7 +1,6 @@
 package com.example.rankcheck
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +12,7 @@ class GamesRV : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.games_recycler_view)
 
-        val gamesRV = findViewById<RecyclerView>(R.id.gamesListRv)
+        val gamesRV = findViewById<RecyclerView>(R.id.friendsListRV)
         games = GameFetcher.getGames()
 
 
