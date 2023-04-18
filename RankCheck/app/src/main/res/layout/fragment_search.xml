@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".searchFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <EditText
+        android:id="@+id/searchbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Search Friends Page" />
+        android:layout_height="34dp"
+        android:layout_gravity="top|center"
+        android:layout_margin="3dp"
+        android:background="@drawable/border"
+        android:drawableLeft="@drawable/baseline_search_24"
+        android:drawablePadding="8dp"
+        android:hint="Search"
+        android:singleLine="true"
+        android:paddingLeft="5dp"
+        android:imeOptions="actionSend"
+         />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/userslist"
+        android:layout_width="match_parent"
+        android:layout_height="599dp"
+        android:layout_gravity="bottom"
+        android:layout_margin="5dp" />
 
 </FrameLayout>
