@@ -15,8 +15,7 @@ import com.example.rankcheck.databinding.FriendsCardCellBinding
 
 const val FRIEND_EXTRA = "FRIEND_EXTRA"
 private const val TAG = "FriendListAdapter"
-class FriendListAdapter(private val context: Context?, private val friends: MutableList<FriendsList>,val listener: SetOnItemClickListener) : RecyclerView.Adapter<FriendListAdapter.ViewHolder>(){
-
+class FriendListAdapter(private val context: Context?, private val friends: MutableList<FriendsList>, val listener: SetOnItemClickListener) : RecyclerView.Adapter<FriendListAdapter.ViewHolder>(){
 
     interface SetOnItemClickListener {
         fun onItemClick()
@@ -50,7 +49,7 @@ class FriendListAdapter(private val context: Context?, private val friends: Muta
         }
 
         Glide.with(context!!)
-                .load("https://media.istockphoto.com/id/615422436/photo/demo-sign-cubes.jpg?s=612x612&w=0&k=20&c=HHOLIiF8SmbIssxKv3G480EgTVub_v9cc1QME3Dn6XU=")
+                .load("@drawable/img_user.xml")
                 .into(holder.userPFPImageView)
 
     }
