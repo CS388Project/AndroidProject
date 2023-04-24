@@ -3,6 +3,7 @@ package com.example.rankcheck
 
 import android.os.Bundle
 import android.text.Editable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.rankcheck.MainActivity.Companion.SESSION_USER
+import com.parse.ParseObject
+import com.parse.ParseQuery
 
 
 class profileFragment: Fragment()  {
@@ -44,11 +47,17 @@ class profileFragment: Fragment()  {
         var bioTV = itemView.findViewById<TextView>(R.id.userBio)
         var editBioET = itemView.findViewById<EditText>(R.id.editBioET)
 
+        // Checks for the username that is set in textview to grab right bio
+        val userLookup = profileUsername.text.toString()
+        val query = ParseQuery.getQuery<ParseObject>("Users")
+        query.whereContains("username", userLookup)
+        val userDB = query.first
+        bioTV.text = userDB.getString("bio")
+
         editBtn.setOnClickListener{
             editBtn.visibility = View.GONE
             submitBtn.visibility = View.VISIBLE
 
-//          should be grabbing from DB rather than front end (stretch?)
             bioTV.visibility = View.GONE
 
             var currentBio = bioTV.text.toString()
@@ -61,8 +70,17 @@ class profileFragment: Fragment()  {
             editBtn.visibility = View.VISIBLE
             submitBtn.visibility = View.GONE
 
-//          Need to send newBio to DB and update properly
             var newBio = editBioET.text.toString()
+
+            // Send new bio to DB
+            userDB.put("bio", newBio)
+            userDB.saveInBackground {
+                if (it != null){
+                    it.localizedMessage?.let { message -> Log.e("User Bio Save:", message) }
+                }else{
+                    Log.d("User Bio Save:","User bio saved.")
+                }
+            }
 
             Toast.makeText(context, newBio, Toast.LENGTH_SHORT).show()
             bioTV.text = newBio
