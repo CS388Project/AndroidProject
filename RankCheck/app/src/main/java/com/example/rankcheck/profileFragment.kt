@@ -1,6 +1,6 @@
 package com.example.rankcheck
 
-import android.media.Image
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,9 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.rankcheck.MainActivity.Companion.SESSION_USER
-import com.parse.ParseObject
-import org.w3c.dom.Text
-import java.util.Arrays
+
 
 class profileFragment: Fragment()  {
     lateinit var profileUsername: TextView

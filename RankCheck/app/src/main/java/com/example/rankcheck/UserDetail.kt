@@ -1,17 +1,21 @@
 package com.example.rankcheck
 
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import android.util.Log
+import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import com.parse.ParseObject
-import com.parse.ParseQuery
+
 
 class UserDetail: AppCompatActivity(){
 
@@ -40,13 +44,25 @@ class UserDetail: AppCompatActivity(){
 
         friendsRV = findViewById(R.id.friendsListRV)
         friends = FriendFetcher.getFriends(user)
-        val adapter = FriendListAdapter(this, friends)
+        val adapter = FriendListAdapter(this,friends,object:FriendListAdapter.SetOnItemClickListener{
+            override fun onItemClick() {
+
+                Toast.makeText(this@UserDetail, "User Clicked!",Toast.LENGTH_SHORT).show()
+
+            }
+        })
         friendsRV.adapter = adapter
         friendsRV.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         gamesRV = findViewById(R.id.gamesListRV)
         games = GameFetcher.getGames()
-        val game_adapter = GameCardViewAdapter(this, games)
+        val game_adapter = GameCardViewAdapter(this, games,object:GameCardViewAdapter.SetOnItemClickListener{
+            override fun onItemClick() {
+
+                Toast.makeText(this@UserDetail, "Game Clicked!",Toast.LENGTH_SHORT).show()
+
+            }
+        })
         gamesRV.adapter = game_adapter
         gamesRV.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
