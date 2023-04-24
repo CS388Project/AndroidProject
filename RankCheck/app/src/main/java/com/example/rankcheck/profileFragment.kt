@@ -2,9 +2,12 @@ package com.example.rankcheck
 
 
 import android.os.Bundle
+import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -34,6 +37,41 @@ class profileFragment: Fragment()  {
 
         profileUsername = itemView.findViewById(R.id.username)
         profileUsername.text = SESSION_USER
+
+        val editBtn = itemView.findViewById<Button>(R.id.editBtn)
+        var submitBtn = itemView.findViewById<Button>(R.id.editSubmit)
+
+        var bioTV = itemView.findViewById<TextView>(R.id.userBio)
+        var editBioET = itemView.findViewById<EditText>(R.id.editBioET)
+
+        editBtn.setOnClickListener{
+            editBtn.visibility = View.GONE
+            submitBtn.visibility = View.VISIBLE
+
+//          should be grabbing from DB rather than front end (stretch?)
+            bioTV.visibility = View.GONE
+
+            var currentBio = bioTV.text.toString()
+            editBioET.setText(currentBio)
+            Toast.makeText(context, currentBio, Toast.LENGTH_SHORT).show()
+
+            editBioET.visibility = View.VISIBLE
+        }
+        submitBtn.setOnClickListener{
+            editBtn.visibility = View.VISIBLE
+            submitBtn.visibility = View.GONE
+
+//          Need to send newBio to DB and update properly
+            var newBio = editBioET.text.toString()
+
+            Toast.makeText(context, newBio, Toast.LENGTH_SHORT).show()
+            bioTV.text = newBio
+
+            bioTV.visibility = View.VISIBLE
+
+            editBioET.visibility = View.GONE
+
+        }
 
         profileImage = itemView.findViewById(R.id.imageUser)
         Glide.with(itemView.context)
