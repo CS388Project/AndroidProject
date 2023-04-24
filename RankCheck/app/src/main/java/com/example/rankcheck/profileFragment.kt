@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +15,7 @@ import com.bumptech.glide.Glide
 import com.example.rankcheck.MainActivity.Companion.SESSION_USER
 import com.parse.ParseObject
 import org.w3c.dom.Text
+import java.util.Arrays
 
 class profileFragment: Fragment()  {
     lateinit var profileUsername: TextView
@@ -42,15 +44,25 @@ class profileFragment: Fragment()  {
 
         friendsRV = itemView.findViewById(R.id.friendsListRV)
         friends = FriendFetcher.getFriends(SESSION_USER)
-        val adapter2 = activity?.let { FriendListAdapter(it, friends) }
+        val adapter = FriendListAdapter(context,friends,object:FriendListAdapter.SetOnItemClickListener{
+            override fun onItemClick() {
+
+                Toast.makeText(context, "Clicked!",Toast.LENGTH_SHORT).show()
+
+            }
+        })
 //        val adapter = FriendListAdapter(it, friendsList)
-        friendsRV.adapter = adapter2
+        friendsRV.adapter = adapter
         friendsRV.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
 
         gamesRV = itemView.findViewById(R.id.gamesListRV)
         games = GameFetcher.getGames()
-        val game_adapter = activity?.let { GameCardViewAdapter(it, games) }
+        val game_adapter =  GameCardViewAdapter(context, games, object:GameCardViewAdapter.SetOnItemClickListener{
+            override fun onItemClick() {
+                Toast.makeText(context, "Clicked!",Toast.LENGTH_SHORT).show()
+            }
+        })
         gamesRV.adapter = game_adapter
         gamesRV.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
