@@ -1,7 +1,9 @@
 package com.example.rankcheck
 
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.Editable
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,6 +14,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContract
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -40,6 +43,8 @@ class profileFragment: Fragment()  {
 
         profileUsername = itemView.findViewById(R.id.username)
         profileUsername.text = SESSION_USER
+        profileImage = itemView.findViewById(R.id.imageUser)
+        val CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034
 
         val editBtn = itemView.findViewById<Button>(R.id.editBtn)
         var submitBtn = itemView.findViewById<Button>(R.id.editSubmit)
@@ -53,7 +58,10 @@ class profileFragment: Fragment()  {
         query.whereContains("username", userLookup)
         val userDB = query.first
         bioTV.text = userDB.getString("bio")
-
+        profileImage.setOnClickListener{
+            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE)
+        }
         editBtn.setOnClickListener{
             editBtn.visibility = View.GONE
             submitBtn.visibility = View.VISIBLE
@@ -91,7 +99,7 @@ class profileFragment: Fragment()  {
 
         }
 
-        profileImage = itemView.findViewById(R.id.imageUser)
+
         Glide.with(itemView.context)
             .load(R.drawable.img_user)
             .into(profileImage)

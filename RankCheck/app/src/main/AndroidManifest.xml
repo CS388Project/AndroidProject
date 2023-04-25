@@ -46,5 +46,11 @@
             android:name="com.parse.SERVER_URL"
             android:value="@string/back4app_server_url" />
     </application>
+    <queries>
+        <!-- Camera -->
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+    </queries>
 
 </manifest>
