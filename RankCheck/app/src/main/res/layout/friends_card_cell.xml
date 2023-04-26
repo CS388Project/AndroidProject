@@ -5,6 +5,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clickable="true"
     android:layout_marginTop="15dp"
     android:layout_marginLeft="10dp">
 <!--Card View widget-->
@@ -16,6 +17,7 @@
         app:cardCornerRadius="8dp"
         app:cardElevation="20dp"
         app:cardBackgroundColor="#E7E0D3"
+        android:clickable="true"
         android:layout_margin="10dp"
         >
 
