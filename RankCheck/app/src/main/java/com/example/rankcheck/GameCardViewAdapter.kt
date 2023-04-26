@@ -43,8 +43,11 @@ class GameCardViewAdapter(private val context: Context?, private val games: Muta
         }
 
         Glide.with(context!!)
-            .load("@drawable/img_lock.xml")
+            .load(games[position].mediaImageUrl)
             .into(holder.gameLogoImageView)
+
+        holder.gameTitleTextView.text = games[position].headline
+        holder.gameDescriptionTV.text = games[position].abstract
 
     }
 
