@@ -49,7 +49,7 @@ class profileFragment: Fragment()  {
         val editBtn = itemView.findViewById<Button>(R.id.editBtn)
         var submitBtn = itemView.findViewById<Button>(R.id.editSubmit)
 
-        var bioTV = itemView.findViewById<TextView>(R.id.userBio)
+        var bioTV = itemView.findViewById<TextView>(R.id.usrBio)
         var editBioET = itemView.findViewById<EditText>(R.id.editBioET)
 
         // Checks for the username that is set in textview to grab right bio

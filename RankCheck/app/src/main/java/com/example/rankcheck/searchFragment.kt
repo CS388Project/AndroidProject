@@ -64,6 +64,10 @@ fun getUsers(username: EditText): MutableList<DisplayUser> {
         for( user in users.iterator())
         {
             val user = DisplayUser(user.getString("username"))
+            if(user.username == MainActivity.SESSION_USER )
+            {
+                continue
+            }
             list.add(user)
         }
     }

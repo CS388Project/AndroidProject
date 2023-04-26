@@ -47,10 +47,11 @@ class FriendListAdapter(private val context: Context?, private val friends: Muta
 //            Toast.makeText(context,"Clicked...",Toast.LENGTH_LONG).show()
             listener.onItemClick()
         }
-
         Glide.with(context!!)
                 .load("@drawable/img_user.xml")
                 .into(holder.userPFPImageView)
+
+        holder.friendNameTextView.text = friends[position].friendUsername
 
     }
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
