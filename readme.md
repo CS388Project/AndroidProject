@@ -9,7 +9,7 @@
 ## Overview
 
 ### Team Members
-Seif Awan, Mustafa Damir, Kasper Kolasinski, Juan Lopez, Cristhian Molina
+Saif Awan, Mostafa Damir, Kasper Kolasinski, Juan Lopez, Cristhian Molina
 
 ### Description
 
