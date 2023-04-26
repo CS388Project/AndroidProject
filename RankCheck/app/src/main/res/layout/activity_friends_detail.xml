@@ -42,7 +42,7 @@
                 android:text="Name" />
 
             <TextView
-                android:id="@+id/userBio"
+                android:id="@+id/usrBio"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
@@ -135,9 +135,10 @@
         android:layout_weight="1"
         android:background="@drawable/baseline_add_24"
         app:layout_constraintBottom_toTopOf="@+id/rowUser"
-        app:layout_constraintEnd_toStartOf="@+id/removebutton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.38" />
+        app:layout_constraintVertical_bias="0.39"
+        android:visibility="visible"/>
 
     <Button
         android:id="@+id/removebutton"
@@ -148,22 +149,25 @@
         android:layout_weight="1"
         android:background="@drawable/baseline_remove_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
+        />
 
     <TextView
         android:id="@+id/text"
         android:layout_width="34dp"
         android:layout_height="21dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="4dp"
         android:text="add"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/rowUser"
-        app:layout_constraintEnd_toStartOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/addbutton"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:visibility="visible"/>
 
     <TextView
         android:id="@+id/textView3"
@@ -175,6 +179,7 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textStyle="bold"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/rowUser"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/removebutton"
