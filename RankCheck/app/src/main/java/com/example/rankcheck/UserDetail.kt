@@ -66,13 +66,7 @@ class UserDetail: AppCompatActivity(){
 
         gamesRV = findViewById(R.id.gamesListRV)
         games = GameFetcher.getGames()
-        val game_adapter = GameCardViewAdapter(this, games,object:GameCardViewAdapter.SetOnItemClickListener{
-            override fun onItemClick() {
-
-                Toast.makeText(this@UserDetail, "Game Clicked!",Toast.LENGTH_SHORT).show()
-
-            }
-        })
+        val game_adapter = GameCardViewAdapter(this, games)
         gamesRV.adapter = game_adapter
         gamesRV.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 

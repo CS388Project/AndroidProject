@@ -120,11 +120,7 @@ class profileFragment: Fragment()  {
 
         gamesRV = itemView.findViewById(R.id.gamesListRV)
         games = GameFetcher.getGames()
-        val game_adapter =  GameCardViewAdapter(context, games, object:GameCardViewAdapter.SetOnItemClickListener{
-            override fun onItemClick() {
-                Toast.makeText(context, "Clicked!",Toast.LENGTH_SHORT).show()
-            }
-        })
+        val game_adapter =  GameCardViewAdapter(context, games)
         gamesRV.adapter = game_adapter
         gamesRV.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 

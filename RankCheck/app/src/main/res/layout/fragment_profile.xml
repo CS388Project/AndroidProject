@@ -152,7 +152,7 @@
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"/>
 
-        <!--        https://www.geeksforgeeks.org/android-horizontal-recyclerview-with-examples/-->
+
     </LinearLayout>
 
 
