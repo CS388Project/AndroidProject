@@ -55,7 +55,7 @@ class UserDetail: AppCompatActivity(){
         friendsRV = findViewById(R.id.friendsListRV)
         friends = FriendFetcher.getFriends(user)
         val adapter = FriendListAdapter(this,friends,object:FriendListAdapter.SetOnItemClickListener{
-            override fun onItemClick() {
+            override fun onItemClick(position: Int) {
 
                 Toast.makeText(this@UserDetail, "User Clicked!",Toast.LENGTH_SHORT).show()
 

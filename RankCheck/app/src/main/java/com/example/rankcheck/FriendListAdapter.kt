@@ -13,12 +13,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.rankcheck.databinding.FriendsCardCellBinding
 
-const val FRIEND_EXTRA = "FRIEND_EXTRA"
+const val FRIEND_EXTRA = "USER_EXTRA"
 private const val TAG = "FriendListAdapter"
 class FriendListAdapter(private val context: Context?, private val friends: MutableList<FriendsList>, val listener: SetOnItemClickListener) : RecyclerView.Adapter<FriendListAdapter.ViewHolder>(){
 
     interface SetOnItemClickListener {
-        fun onItemClick()
+        fun onItemClick(position: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -45,7 +45,7 @@ class FriendListAdapter(private val context: Context?, private val friends: Muta
 
         holder.cardView.setOnClickListener {
 //            Toast.makeText(context,"Clicked...",Toast.LENGTH_LONG).show()
-            listener.onItemClick()
+            listener.onItemClick(position)
         }
         Glide.with(context!!)
                 .load("@drawable/img_user.xml")

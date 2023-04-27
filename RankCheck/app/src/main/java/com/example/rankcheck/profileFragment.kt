@@ -23,7 +23,7 @@ import com.example.rankcheck.MainActivity.Companion.SESSION_USER
 import com.parse.ParseObject
 import com.parse.ParseQuery
 
-
+const val USER_EXTRA = "USER_EXTRA"
 class profileFragment: Fragment()  {
     lateinit var profileUsername: TextView
     lateinit var profileImage: ImageView
@@ -107,10 +107,12 @@ class profileFragment: Fragment()  {
         friendsRV = itemView.findViewById(R.id.friendsListRV)
         friends = FriendFetcher.getFriends(SESSION_USER)
         val adapter = FriendListAdapter(context,friends,object:FriendListAdapter.SetOnItemClickListener{
-            override fun onItemClick() {
+            override fun onItemClick(position: Int) {
 
                 Toast.makeText(context, "Clicked!",Toast.LENGTH_SHORT).show()
-
+                val intent = Intent(context, UserDetail::class.java)
+                intent.putExtra(USER_EXTRA, friends[position].friendUsername)
+                context?.startActivity(intent)
             }
         })
 //        val adapter = FriendListAdapter(it, friendsList)
