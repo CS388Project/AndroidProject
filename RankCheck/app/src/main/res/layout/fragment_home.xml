@@ -45,7 +45,7 @@
                 android:id="@+id/leagueUser"
                 android:layout_height="75dp"
                 android:layout_gravity="center_vertical"
-                app:layout_constraintEnd_toEndOf="@id/rlFriends"
+                app:layout_constraintEnd_toEndOf="@id/rocketFriendRV"
                 app:layout_constraintBottom_toTopOf="@id/leagueUsername"
                 android:src="@drawable/img_user"
                 />
@@ -103,7 +103,7 @@
                 android:id="@+id/apexUser"
                 android:layout_height="75dp"
                 android:layout_gravity="center_vertical"
-                app:layout_constraintEnd_toEndOf="@id/rlFriends"
+                app:layout_constraintEnd_toEndOf="@id/rocketFriendRV"
                 app:layout_constraintBottom_toTopOf="@id/apexUsername"
                 android:src="@drawable/img_user"
                 />
@@ -160,7 +160,7 @@
             android:id="@+id/rlUser"
             android:layout_height="75dp"
             android:layout_gravity="center_vertical"
-            app:layout_constraintEnd_toEndOf="@id/rlFriends"
+            app:layout_constraintEnd_toEndOf="@id/rocketFriendRV"
             app:layout_constraintBottom_toTopOf="@id/rlUsername"
             android:src="@drawable/img_user"
             />
@@ -173,7 +173,7 @@
             android:id="@+id/rlUsername"/>
         </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rlFriends"
+            android:id="@+id/rocketFriendRV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scrollbars="vertical"
