@@ -15,18 +15,22 @@ import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.parse.ParseObject
+import com.parse.ParseQuery
 
 
 class UserDetail: AppCompatActivity(){
 
     lateinit var profileUsername: TextView
+    lateinit var profileBio: TextView
     lateinit var profileImage: ImageView
     lateinit var friendsRV: RecyclerView
     private lateinit var friends: MutableList<FriendsList>
     lateinit var gamesRV: RecyclerView
     lateinit var games: MutableList<DisplayGame>
     lateinit var add: Button
+    lateinit var addtext: TextView
     lateinit var remove: Button
+    lateinit var removetext: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +41,12 @@ class UserDetail: AppCompatActivity(){
         profileUsername = findViewById(R.id.username)
         profileUsername.text = user
 
+        val query = ParseQuery.getQuery<ParseObject>("Users")
+        query.whereContains("username", user)
+        val userDB = query.first
+        profileBio = findViewById(R.id.usrBio)
+        profileBio.text = userDB.getString("bio")
+
         profileImage = findViewById(R.id.imageUser)
         Glide.with(this)
             .load(R.drawable.img_user)
@@ -45,7 +55,7 @@ class UserDetail: AppCompatActivity(){
         friendsRV = findViewById(R.id.friendsListRV)
         friends = FriendFetcher.getFriends(user)
         val adapter = FriendListAdapter(this,friends,object:FriendListAdapter.SetOnItemClickListener{
-            override fun onItemClick() {
+            override fun onItemClick(position: Int) {
 
                 Toast.makeText(this@UserDetail, "User Clicked!",Toast.LENGTH_SHORT).show()
 
@@ -56,18 +66,22 @@ class UserDetail: AppCompatActivity(){
 
         gamesRV = findViewById(R.id.gamesListRV)
         games = GameFetcher.getGames()
-        val game_adapter = GameCardViewAdapter(this, games,object:GameCardViewAdapter.SetOnItemClickListener{
-            override fun onItemClick() {
-
-                Toast.makeText(this@UserDetail, "Game Clicked!",Toast.LENGTH_SHORT).show()
-
-            }
-        })
+        val game_adapter = GameCardViewAdapter(this, games)
         gamesRV.adapter = game_adapter
         gamesRV.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         add = findViewById(R.id.addbutton)
+        addtext = findViewById(R.id.text)
         remove = findViewById(R.id.removebutton)
+        removetext = findViewById(R.id.textView3)
+
+        if (userFriend(user))
+        {
+            add.visibility = View.GONE
+            addtext.visibility = View.GONE
+            remove.visibility = View.VISIBLE
+            removetext.visibility = View.VISIBLE
+        }
 
         add.setOnClickListener {
 
@@ -82,18 +96,57 @@ class UserDetail: AppCompatActivity(){
                     Toast.makeText(this, "Friend Saved!", Toast.LENGTH_LONG).show()
                 }
             }
-
+            finish();
+            overridePendingTransition(0, 0);
+            startActivity(intent);
+            overridePendingTransition(0, 0);
         }
 
-//        remove.setOnClickListener {
-//
-//            val query = ParseQuery.getQuery<ParseObject>("Friends")
-//            query.whereContains("username", MainActivity.SESSION_USER)
-//            var users = query.find()
-//
-//        }
+        remove.setOnClickListener {
 
-
-
+            val query = ParseQuery.getQuery<ParseObject>("Friends")
+            query.whereContains("username", MainActivity.SESSION_USER)
+            var users = query.find()
+            if (!users.isNullOrEmpty()) {
+                for( usr in users.iterator())
+                {
+                    if(usr.getString("friendUsername").toString() == user)
+                    {
+                        usr.deleteInBackground {
+                            if (it != null){
+                                it.localizedMessage?.let { message -> Log.e("RemoveFriend", message) }
+                            }else{
+                                Log.d("RemoveFriend","Friend Removed.")
+                                Toast.makeText(this, "Friend Removed!", Toast.LENGTH_LONG).show()
+                            }
+                        }
+                        finish();
+                        overridePendingTransition(0, 0);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+                    }
+                }
+            }
+        }
     }
+
+
+    private fun userFriend(usr: String): Boolean
+    {
+        val query = ParseQuery.getQuery<ParseObject>("Friends")
+        query.whereContains("username", MainActivity.SESSION_USER)
+        var users = query.find()
+
+        if (!users.isNullOrEmpty()) {
+            for( user in users.iterator())
+            {
+                if(user.getString("friendUsername").toString() == usr)
+                {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+
 }

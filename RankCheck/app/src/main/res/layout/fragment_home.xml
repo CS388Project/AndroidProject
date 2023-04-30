@@ -1,14 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".homeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_home_page" />
 
-</FrameLayout>
+
+    <TextView
+        android:padding="10dp"
+        android:textSize="75px"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="League of Legends"
+        android:id="@+id/gameOneText"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/gameOne"
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
+    <LinearLayout
+        android:id="@+id/gameOne"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gameOneText"
+        app:layout_constraintBottom_toTopOf="@id/gameTwoText"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="10dp"
+            android:paddingHorizontal="10dp"
+            android:backgroundTint="#E7E0D3"
+            android:background="@drawable/home_border"
+            android:width="10dp" android:color="#CCCCCC">
+
+            <ImageView
+                android:layout_width="75dp"
+                android:id="@+id/leagueUser"
+                android:layout_height="75dp"
+                android:layout_gravity="center_vertical"
+                app:layout_constraintEnd_toEndOf="@id/rlFriends"
+                app:layout_constraintBottom_toTopOf="@id/leagueUsername"
+                android:src="@drawable/img_user"
+                />
+            <TextView
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toBottomOf= "@id/leagueUser"
+                android:text="League Username"
+                android:textAlignment="center"
+                android:id="@+id/leagueUsername"/>
+        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/leagueFriendRV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:clickable="true"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/gameTwoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apex Legends"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/gameOne"
+        app:layout_constraintBottom_toTopOf="@id/gameTwo"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="75px"
+        android:padding="10dp"
+        />
+    <LinearLayout
+        android:id="@+id/gameTwo"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gameTwoText"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="10dp"
+            android:paddingHorizontal="10dp"
+            android:background="@drawable/home_border"
+            android:backgroundTint="#E7E0D3">
+            <ImageView
+                android:layout_width="75dp"
+                android:id="@+id/apexUser"
+                android:layout_height="75dp"
+                android:layout_gravity="center_vertical"
+                app:layout_constraintEnd_toEndOf="@id/rlFriends"
+                app:layout_constraintBottom_toTopOf="@id/apexUsername"
+                android:src="@drawable/img_user"
+                />
+            <TextView
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toBottomOf= "@id/apexUser"
+                android:text="Apex Username"
+                android:textAlignment="center"
+                android:id="@+id/apexUsername"/>
+        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/apexFriendRV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/GamesText"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/gameThreeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rocket League"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/gameTwo"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="75px"
+        android:padding="10dp"
+        />
+    <LinearLayout
+        android:id="@+id/rlRow"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gameThreeText"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingHorizontal="10dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/home_border"
+            android:backgroundTint="#E7E0D3"
+            >
+        <ImageView
+            android:layout_width="75dp"
+            android:id="@+id/rlUser"
+            android:layout_height="75dp"
+            android:layout_gravity="center_vertical"
+            app:layout_constraintEnd_toEndOf="@id/rlFriends"
+            app:layout_constraintBottom_toTopOf="@id/rlUsername"
+            android:src="@drawable/img_user"
+            />
+        <TextView
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf= "@id/rlUser"
+            android:text="Rocket League Username"
+            android:textAlignment="center"
+            android:id="@+id/rlUsername"/>
+        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rlFriends"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rlRow"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

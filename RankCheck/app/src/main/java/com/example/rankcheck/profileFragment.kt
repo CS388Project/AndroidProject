@@ -22,7 +22,8 @@ import com.parse.ParseQuery
 import java.io.ByteArrayOutputStream
 
 
-class profileFragment : Fragment() {
+const val USER_EXTRA = "USER_EXTRA"
+class profileFragment: Fragment()  {
     lateinit var profileUsername: TextView
     lateinit var profileImage: ImageView
     lateinit var friendsRV: RecyclerView
@@ -53,7 +54,7 @@ class profileFragment : Fragment() {
         val editBtn = itemView.findViewById<Button>(R.id.editBtn)
         var submitBtn = itemView.findViewById<Button>(R.id.editSubmit)
 
-        var bioTV = itemView.findViewById<TextView>(R.id.userBio)
+        var bioTV = itemView.findViewById<TextView>(R.id.usrBio)
         var editBioET = itemView.findViewById<EditText>(R.id.editBioET)
 
         // Checks for the username that is set in textview to grab right bio
@@ -108,14 +109,16 @@ class profileFragment : Fragment() {
 
         friendsRV = itemView.findViewById(R.id.friendsListRV)
         friends = FriendFetcher.getFriends(SESSION_USER)
-        val adapter =
-            FriendListAdapter(context, friends, object : FriendListAdapter.SetOnItemClickListener {
-                override fun onItemClick() {
 
-                    Toast.makeText(context, "Clicked!", Toast.LENGTH_SHORT).show()
+        val adapter = FriendListAdapter(context,friends,object:FriendListAdapter.SetOnItemClickListener{
+            override fun onItemClick(position: Int) {
 
-                }
-            })
+                Toast.makeText(context, "Clicked!",Toast.LENGTH_SHORT).show()
+                val intent = Intent(context, UserDetail::class.java)
+                intent.putExtra(USER_EXTRA, friends[position].friendUsername)
+                context?.startActivity(intent)
+            }
+        })
 //        val adapter = FriendListAdapter(it, friendsList)
         friendsRV.adapter = adapter
         friendsRV.layoutManager =
@@ -124,14 +127,8 @@ class profileFragment : Fragment() {
 
         gamesRV = itemView.findViewById(R.id.gamesListRV)
         games = GameFetcher.getGames()
-        val game_adapter = GameCardViewAdapter(
-            context,
-            games,
-            object : GameCardViewAdapter.SetOnItemClickListener {
-                override fun onItemClick() {
-                    Toast.makeText(context, "Clicked!", Toast.LENGTH_SHORT).show()
-                }
-            })
+
+        val game_adapter =  GameCardViewAdapter(context, games)
         gamesRV.adapter = game_adapter
         gamesRV.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
