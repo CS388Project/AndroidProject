@@ -45,17 +45,25 @@
                 android:id="@+id/leagueUser"
                 android:layout_height="75dp"
                 android:layout_gravity="center_vertical"
-                app:layout_constraintEnd_toEndOf="@id/rlFriends"
+                app:layout_constraintEnd_toEndOf="@id/rocketFriendRV"
                 app:layout_constraintBottom_toTopOf="@id/leagueUsername"
                 android:src="@drawable/img_user"
                 />
+
             <TextView
+                android:id="@+id/leagueUsername"
                 android:layout_width="75dp"
-                android:layout_height="match_parent"
-                app:layout_constraintTop_toBottomOf= "@id/leagueUser"
-                android:text="League Username"
+                android:layout_height="wrap_content"
+                android:text="Your Rank:"
                 android:textAlignment="center"
-                android:id="@+id/leagueUsername"/>
+                app:layout_constraintTop_toBottomOf="@id/leagueUser" />
+
+            <TextView
+                android:id="@+id/leagueRankTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="*RANK*"
+                android:textAlignment="center"/>
         </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/leagueFriendRV"
@@ -98,22 +106,30 @@
             android:paddingHorizontal="10dp"
             android:background="@drawable/home_border"
             android:backgroundTint="#E7E0D3">
+
             <ImageView
                 android:layout_width="75dp"
                 android:id="@+id/apexUser"
                 android:layout_height="75dp"
                 android:layout_gravity="center_vertical"
-                app:layout_constraintEnd_toEndOf="@id/rlFriends"
+                app:layout_constraintEnd_toEndOf="@id/rocketFriendRV"
                 app:layout_constraintBottom_toTopOf="@id/apexUsername"
                 android:src="@drawable/img_user"
                 />
             <TextView
                 android:layout_width="75dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf= "@id/apexUser"
-                android:text="Apex Username"
+                android:text="Your Rank:"
                 android:textAlignment="center"
                 android:id="@+id/apexUsername"/>
+
+            <TextView
+                android:id="@+id/apexRankTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="*RANK*"
+                android:textAlignment="center" />
         </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/apexFriendRV"
@@ -155,25 +171,33 @@
             android:background="@drawable/home_border"
             android:backgroundTint="#E7E0D3"
             >
-        <ImageView
+
+            <ImageView
             android:layout_width="75dp"
             android:id="@+id/rlUser"
             android:layout_height="75dp"
             android:layout_gravity="center_vertical"
-            app:layout_constraintEnd_toEndOf="@id/rlFriends"
+            app:layout_constraintEnd_toEndOf="@id/rocketFriendRV"
             app:layout_constraintBottom_toTopOf="@id/rlUsername"
             android:src="@drawable/img_user"
             />
         <TextView
             android:layout_width="75dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf= "@id/rlUser"
-            android:text="Rocket League Username"
+            android:text="Your Rank:"
             android:textAlignment="center"
             android:id="@+id/rlUsername"/>
+
+            <TextView
+                android:id="@+id/rocketRankTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="*RANK*"
+                android:textAlignment="center" />
         </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rlFriends"
+            android:id="@+id/rocketFriendRV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scrollbars="vertical"
