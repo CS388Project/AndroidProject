@@ -111,5 +111,8 @@ class homeFragment: Fragment()  {
         if(!userFound.isNullOrEmpty()){
             view.text = userFound[0].getString("rank")
         }
+        else{
+            view.text = "NOT LINKED"
+        }
     }
 }
