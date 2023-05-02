@@ -126,7 +126,6 @@ class profileFragment: Fragment() {
             FriendListAdapter(context, friends, object : FriendListAdapter.SetOnItemClickListener {
                 override fun onItemClick(position: Int) {
 
-                    Toast.makeText(context, "Clicked!", Toast.LENGTH_SHORT).show()
                     val intent = Intent(context, UserDetail::class.java)
                     intent.putExtra(USER_EXTRA, friends[position].friendUsername)
                     context?.startActivity(intent)
