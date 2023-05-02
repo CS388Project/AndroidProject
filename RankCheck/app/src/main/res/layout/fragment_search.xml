@@ -8,26 +8,54 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:id="@+id/srchbtn"
+        android:text="Search"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="30dp"
+        android:id="@+id/pndbtn"
+        android:text="Pending"/>
+
     <EditText
         android:id="@+id/searchbar"
         android:layout_width="match_parent"
         android:layout_height="34dp"
-        android:layout_gravity="top|center"
-        android:layout_margin="3dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginEnd="3dp"
         android:background="@drawable/border"
         android:drawableLeft="@drawable/baseline_search_24"
         android:drawablePadding="8dp"
         android:hint="Search"
-        android:singleLine="true"
-        android:paddingLeft="5dp"
         android:imeOptions="actionSend"
-         />
+        android:paddingLeft="5dp"
+        android:singleLine="true"
+        android:visibility="visible"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/userslist"
         android:layout_width="match_parent"
-        android:layout_height="599dp"
+        android:layout_height="547dp"
         android:layout_gravity="bottom"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        android:visibility="visible"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/pendinglist"
+        android:layout_width="match_parent"
+        android:layout_height="632dp"
+        android:layout_gravity="bottom"
+        android:layout_margin="5dp"
+        android:visibility="gone" />
+
+
 
 </FrameLayout>

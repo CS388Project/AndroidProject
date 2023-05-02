@@ -8,14 +8,15 @@
 
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_gravity="center"
-        app:cardCornerRadius="250dp"
         android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
         android:innerRadius="0dp"
         android:shape="ring"
         android:thicknessRatio="8"
+        app:cardCornerRadius="250dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -45,6 +46,28 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-         />
+        />
+
+    <Button
+        android:id="@+id/confrimbtn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/confirm"
+        app:layout_constraintStart_toEndOf="@+id/cardView2"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/declinebtn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/baseline_remove_24"
+        app:layout_constraintStart_toEndOf="@+id/confrimbtn"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

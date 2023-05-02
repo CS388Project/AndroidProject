@@ -23,7 +23,7 @@ import java.io.ByteArrayOutputStream
 
 
 const val USER_EXTRA = "USER_EXTRA"
-class profileFragment: Fragment()  {
+class profileFragment: Fragment() {
     lateinit var profileUsername: TextView
     lateinit var profileImage: ImageView
     lateinit var friendsRV: RecyclerView
@@ -33,6 +33,7 @@ class profileFragment: Fragment()  {
     val CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034
 
     lateinit var userDB: ParseObject
+
 
 
     override fun onCreateView(
@@ -63,7 +64,7 @@ class profileFragment: Fragment()  {
         query.whereContains("username", userLookup)
         userDB = query.first
         bioTV.text = userDB.getString("bio")
-        profileImage.setImageBitmap(decodeImage(userDB.getString("image").toString()))
+        profileImage.setImageBitmap(ImageObj.decodeImage(userDB.getString("image").toString()))
         profileImage.setOnClickListener {
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE)
@@ -110,15 +111,16 @@ class profileFragment: Fragment()  {
         friendsRV = itemView.findViewById(R.id.friendsListRV)
         friends = FriendFetcher.getFriends(SESSION_USER)
 
-        val adapter = FriendListAdapter(context,friends,object:FriendListAdapter.SetOnItemClickListener{
-            override fun onItemClick(position: Int) {
+        val adapter =
+            FriendListAdapter(context, friends, object : FriendListAdapter.SetOnItemClickListener {
+                override fun onItemClick(position: Int) {
 
-                Toast.makeText(context, "Clicked!",Toast.LENGTH_SHORT).show()
-                val intent = Intent(context, UserDetail::class.java)
-                intent.putExtra(USER_EXTRA, friends[position].friendUsername)
-                context?.startActivity(intent)
-            }
-        })
+                    Toast.makeText(context, "Clicked!", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(context, UserDetail::class.java)
+                    intent.putExtra(USER_EXTRA, friends[position].friendUsername)
+                    context?.startActivity(intent)
+                }
+            })
 //        val adapter = FriendListAdapter(it, friendsList)
         friendsRV.adapter = adapter
         friendsRV.layoutManager =
@@ -128,7 +130,7 @@ class profileFragment: Fragment()  {
         gamesRV = itemView.findViewById(R.id.gamesListRV)
         games = GameFetcher.getGames()
 
-        val game_adapter =  GameCardViewAdapter(context, games)
+        val game_adapter = GameCardViewAdapter(context, games)
         gamesRV.adapter = game_adapter
         gamesRV.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
@@ -155,7 +157,7 @@ class profileFragment: Fragment()  {
         )
         profileImage.setImageBitmap(photo)
 
-        val imageString = encodeImage(photo)
+        val imageString = ImageObj.encodeImage(photo)
         userDB.put("image", imageString)
 
 
@@ -174,7 +176,10 @@ class profileFragment: Fragment()  {
             }
         }
     }
+}
 
+object ImageObj
+{
     fun encodeImage(bitmap: Bitmap): String {
         val bos = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos)
