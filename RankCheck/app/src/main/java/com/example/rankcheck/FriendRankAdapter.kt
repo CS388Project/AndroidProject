@@ -48,7 +48,7 @@ class FriendRankAdapter(private val context: Context?, private val friends: Muta
             listener.onItemClick(position)
         }
         Glide.with(context!!)
-                .load("@drawable/img_user.xml")
+                .load(R.drawable.img_user)
                 .into(holder.userPFPImageView)
 
         holder.friendNameTextView.text = friends[position].friendUsername

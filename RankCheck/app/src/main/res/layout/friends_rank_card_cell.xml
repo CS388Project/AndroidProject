@@ -11,15 +11,14 @@
 <!--Card View widget-->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:contentPadding="15dp"
+        android:layout_margin="10dp"
+        android:clickable="true"
+        app:cardBackgroundColor="#E7E0D3"
         app:cardCornerRadius="8dp"
         app:cardElevation="20dp"
-        app:cardBackgroundColor="#E7E0D3"
-        android:clickable="true"
-        android:layout_margin="10dp"
-        >
+        app:contentPadding="15dp">
 
         <!--Text View over Card View-->
         <ImageView
@@ -28,31 +27,33 @@
             android:layout_height="80dp"
             android:layout_gravity="center_vertical"
             app:srcCompat="@drawable/img_user" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:paddingHorizontal="10dp">
-                <TextView
-                    android:id="@+id/friendName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="20dp"
-                    android:text="Friend Username"
-                    android:textColor="@color/black"
-                    android:textSize="50px" />
 
-                <TextView
-                    android:id="@+id/friendRankTV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="20dp"
-                    android:text="Rank"
-                    android:textColor="@color/black"
-                    android:textSize="50px" />
+            <TextView
+                android:id="@+id/friendName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="20dp"
+                android:text="Friend Username"
+                android:textColor="@color/black"
+                android:textSize="50px" />
+
+            <TextView
+                android:id="@+id/friendRankTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:text="Rank"
+                android:textColor="@color/black"
+                android:textSize="50px" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

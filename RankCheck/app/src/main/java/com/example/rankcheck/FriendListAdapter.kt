@@ -50,11 +50,11 @@ class FriendListAdapter(private val context: Context?, private val friends: Muta
         }
 
         if (friends[position].pfp.toString() != "null") {
-            Log.e("pfp",friends[position].pfp.toString())
+
             holder.userPFPImageView.setImageBitmap(ImageObj.decodeImage(friends[position].pfp.toString()))
         }
         else {
-            Log.e("fail",friends[position].pfp.toString())
+
             Glide.with(context!!)
                 .load(R.drawable.img_user)
                 .into(holder.userPFPImageView)

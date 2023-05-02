@@ -112,7 +112,7 @@ class homeFragment: Fragment()  {
             view.text = userFound[0].getString("rank")
         }
         else{
-            view.text = "NOT LINKED"
+            view.text = "UNLINKED"
         }
     }
 }
