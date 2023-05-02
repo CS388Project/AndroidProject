@@ -39,9 +39,9 @@ There are a multitude of competitive games like CS GO, Valorant, League, Apex, e
 - [x] Register and Login Functionality
 - [x] Connect their accounts from different games (3 of 3)
     - [x] Allow game link removal
-- [ ] Display Ranking for Chosen Games
+- [x] Display Ranking for Chosen Games
 - [x] Add/Remove Friends
-- [ ] See Friends Rankings
+- [x] See Friends Rankings
 - [x] Have a profile page
 - [x] Search for users
 
@@ -49,7 +49,7 @@ There are a multitude of competitive games like CS GO, Valorant, League, Apex, e
 
 - [ ] React/Comment on friends posts/rank updates
 - [x] Edit profile page
-- [ ] Custimize profile setup
+- [x] Custimize profile setup
 - [ ] Customize app theme (e.g. Light or Dark Mode)
 - [ ] Loot boxes/daily prizes for logging in 
 - [ ] Advertisements 
@@ -119,3 +119,8 @@ There are a multitude of competitive games like CS GO, Valorant, League, Apex, e
 
 ### Unit 12 - Sprint 4:
 <img src='https://i.imgur.com/xuRWuw4.gif' title='Sprint 4' width='' alt='Sprint 4' />
+
+### Unit 13 - Sprint 5:
+<img src='https://i.imgur.com/otBUMcE.gif' title='Sprint 5' width='' alt='Sprint 5' />
+
+### App Demo Video:
