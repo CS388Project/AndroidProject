@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide
 import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.example.rankcheck.ImageObj.decodeImage
 import com.parse.ParseObject
 import com.parse.ParseQuery
 
@@ -28,9 +29,11 @@ class UserDetail: AppCompatActivity(){
     lateinit var gamesRV: RecyclerView
     lateinit var games: MutableList<DisplayGame>
     lateinit var add: Button
-    lateinit var addtext: TextView
     lateinit var remove: Button
-    lateinit var removetext: TextView
+    lateinit var cancel: Button
+    lateinit var accept: Button
+    lateinit var decline: Button
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,10 +51,15 @@ class UserDetail: AppCompatActivity(){
         profileBio.text = userDB.getString("bio")
 
         profileImage = findViewById(R.id.imageUser)
-        Glide.with(this)
-            .load(R.drawable.img_user)
-            .into(profileImage)
 
+        if (userDB.getString("image") != null) {
+            profileImage.setImageBitmap(decodeImage(userDB.getString("image").toString()))
+        }
+        else {
+            Glide.with(this)
+                .load(R.drawable.img_user)
+                .into(profileImage)
+        }
         friendsRV = findViewById(R.id.friendsListRV)
         friends = FriendFetcher.getFriends(user)
         val adapter = FriendListAdapter(this,friends,object:FriendListAdapter.SetOnItemClickListener{
@@ -71,16 +79,29 @@ class UserDetail: AppCompatActivity(){
         gamesRV.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         add = findViewById(R.id.addbutton)
-        addtext = findViewById(R.id.text)
         remove = findViewById(R.id.removebutton)
-        removetext = findViewById(R.id.textView3)
+        cancel = findViewById(R.id.cancelrequest)
+        accept = findViewById(R.id.acceptbutton)
+        decline = findViewById(R.id.declinebutton)
 
-        if (userFriend(user))
+
+        if (userFriend(user) == 0)
         {
             add.visibility = View.GONE
-            addtext.visibility = View.GONE
             remove.visibility = View.VISIBLE
-            removetext.visibility = View.VISIBLE
+        }
+
+        if (userFriend(user) == 1)
+        {
+            add.visibility = View.GONE
+            cancel.visibility = View.VISIBLE
+        }
+
+        if (userFriend(user) == 3)
+        {
+            add.visibility = View.GONE
+            accept.visibility = View.VISIBLE
+            decline.visibility = View.VISIBLE
         }
 
         add.setOnClickListener {
@@ -88,12 +109,13 @@ class UserDetail: AppCompatActivity(){
             val newfriend = ParseObject("Friends")
             newfriend.put("username", MainActivity.SESSION_USER)
             newfriend.put("friendUsername", user)
+            newfriend.put("status", "pending")
             newfriend.saveInBackground {
                 if (it != null){
                     it.localizedMessage?.let { message -> Log.e("AddFriend", message) }
                 }else{
-                    Log.d("AddFriend","Friend saved.")
-                    Toast.makeText(this, "Friend Saved!", Toast.LENGTH_LONG).show()
+                    Log.d("AddFriend","Request sent")
+                    Toast.makeText(this, "Request sent!", Toast.LENGTH_LONG).show()
                 }
             }
             finish();
@@ -102,7 +124,7 @@ class UserDetail: AppCompatActivity(){
             overridePendingTransition(0, 0);
         }
 
-        remove.setOnClickListener {
+        cancel.setOnClickListener {
 
             val query = ParseQuery.getQuery<ParseObject>("Friends")
             query.whereContains("username", MainActivity.SESSION_USER)
@@ -127,26 +149,156 @@ class UserDetail: AppCompatActivity(){
                     }
                 }
             }
+
+
+        }
+
+        remove.setOnClickListener {
+
+            val query = ParseQuery.getQuery<ParseObject>("Friends")
+            val query2 = ParseQuery.getQuery<ParseObject>("Friends")
+            query.whereContains("username", MainActivity.SESSION_USER)
+            var users = query.find()
+            if (!users.isNullOrEmpty()) {
+                for( usr in users.iterator())
+                {
+                    if(usr.getString("friendUsername").toString() == user)
+                    {
+                        usr.deleteInBackground {
+                            if (it != null){
+                                it.localizedMessage?.let { message -> Log.e("RemoveFriend", message) }
+                            }else{
+                                Log.d("RemoveFriend","Friend Removed.")
+                                Toast.makeText(this, "Friend Removed!", Toast.LENGTH_LONG).show()
+                            }
+                        }
+                        finish();
+                        overridePendingTransition(0, 0);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+                    }
+                }
+            }
+            query2.whereContains("username", user)
+            users = query2.find()
+            if (!users.isNullOrEmpty()) {
+                for( usr in users.iterator())
+                {
+                    if(usr.getString("friendUsername").toString() == MainActivity.SESSION_USER)
+                    {
+                        usr.deleteInBackground {
+                            if (it != null){
+                                it.localizedMessage?.let { message -> Log.e("RemoveFriend", message) }
+                            }else{
+                                Log.d("RemoveFriend","Friend Removed.")
+                                Toast.makeText(this, "Friend Removed!", Toast.LENGTH_LONG).show()
+                            }
+                        }
+                        finish();
+                        overridePendingTransition(0, 0);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+                    }
+                }
+            }
+
+        }
+
+        accept.setOnClickListener {
+            val newfriend = ParseQuery.getQuery<ParseObject>("Friends")
+            newfriend.whereEqualTo("friendUsername", MainActivity.SESSION_USER)
+            newfriend.whereEqualTo("username",user)
+            var find = newfriend.find()
+            find.first().put("status", "friends")
+            find.first().saveInBackground {
+                if (it != null){
+                    it.localizedMessage?.let { message -> Log.e("AddFriend", message) }
+                }else{
+                    Log.d("AddFriend","failed")
+                }
+            }
+            finish();
+            overridePendingTransition(0, 0);
+            startActivity(intent);
+            overridePendingTransition(0, 0);
         }
     }
 
 
-    private fun userFriend(usr: String): Boolean
+    private fun userFriend(usr: String): Int
     {
         val query = ParseQuery.getQuery<ParseObject>("Friends")
-        query.whereContains("username", MainActivity.SESSION_USER)
+        val query2 = ParseQuery.getQuery<ParseObject>("Friends")
+        query.whereEqualTo("username", MainActivity.SESSION_USER)
         var users = query.find()
 
         if (!users.isNullOrEmpty()) {
             for( user in users.iterator())
             {
-                if(user.getString("friendUsername").toString() == usr)
+                if(user.getString("friendUsername").toString() == usr && user.getString("status").toString() == "friends")
                 {
-                    return true
+                    return 0
+                }
+                if(user.getString("friendUsername").toString() == usr && user.getString("status").toString() == "pending")
+                {
+                    return 1
                 }
             }
         }
-        return false
+        query2.whereEqualTo("friendUsername", MainActivity.SESSION_USER)
+        users = query2.find()
+        if (!users.isNullOrEmpty()) {
+            for( user in users.iterator())
+            {
+                if(user.getString("username").toString() == usr && user.getString("status").toString() == "friends")
+                {
+                    return 0
+                }
+                if(user.getString("username").toString() == usr && user.getString("status").toString() == "pending")
+                {
+                    return 3
+                }
+            }
+        }
+        return 2
+    }
+
+    private fun getpending(usr: String): Int
+    {
+        val query = ParseQuery.getQuery<ParseObject>("Friends")
+        val query2 = ParseQuery.getQuery<ParseObject>("Friends")
+        query.whereEqualTo("username", MainActivity.SESSION_USER)
+        var users = query.find()
+
+        if (!users.isNullOrEmpty()) {
+            for( user in users.iterator())
+            {
+                if(user.getString("friendUsername").toString() == usr && user.getString("status").toString() == "friends")
+                {
+                    return 0
+                }
+                if(user.getString("friendUsername").toString() == usr && user.getString("status").toString() == "pending")
+                {
+                    return 1
+                }
+            }
+        }
+        query2.whereEqualTo("friendUsername", MainActivity.SESSION_USER)
+        users = query2.find()
+        if (!users.isNullOrEmpty()) {
+            for( user in users.iterator())
+            {
+                if(user.getString("username").toString() == usr && user.getString("status").toString() == "friends")
+                {
+                    return 0
+                }
+                if(user.getString("username").toString() == usr && user.getString("status").toString() == "pending")
+                {
+                    return 1
+                }
+            }
+        }
+        return 2
     }
 
 }

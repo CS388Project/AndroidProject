@@ -2,6 +2,7 @@ package com.example.rankcheck
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,11 +30,21 @@ class UsersAdapter(private val context: FragmentActivity, private val users: Mut
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView),
         View.OnClickListener{
         private val userName = itemView.findViewById<TextView>(R.id.userName)
+        private val userpic = itemView.findViewById<ImageView>(R.id.Userpic)
         init {
             itemView.setOnClickListener(this)
         }
         fun bind(userInfo: DisplayUser) {
             userName.text = userInfo.username
+            if(userInfo.userpic != "null") {
+                userpic.setImageBitmap(ImageObj.decodeImage(userInfo.userpic))
+            }
+            else
+            {
+                Glide.with(itemView.context)
+                    .load(R.drawable.img_user)
+                    .into(userpic)
+            }
         }
 
         override fun onClick(p0: View?) {
