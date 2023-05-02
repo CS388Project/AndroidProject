@@ -6,18 +6,14 @@ import com.parse.ParseQuery
 
 class FriendFetcher {
     companion object{
-        val friendsNames = listOf("Friend1", "Friend2", "Friend3", "Friend4", "Friend5")
-        val friendPFP = listOf(
-            R.drawable.img_user,
-            R.drawable.img_user,
-            R.drawable.img_user,
-            R.drawable.img_user,
-            R.drawable.img_user)
         fun getFriends(username: String): MutableList<FriendsList> {
             val query = ParseQuery.getQuery<ParseObject>("Friends")
             val query2= ParseQuery.getQuery<ParseObject>("Friends")
+            val query3 = ParseQuery.getQuery<ParseObject>("Users")
+            val query4 = ParseQuery.getQuery<ParseObject>("Users")
             val username = username.toString()
             var friends = mutableListOf<FriendsList>()
+
 
             query.whereEqualTo("username", username)
             var ParseFriends = query.find()
@@ -26,10 +22,14 @@ class FriendFetcher {
             {
             for(ParseFriend in ParseFriends){
                 if (ParseFriend.getString("status") == "friends") {
+                    query3.whereEqualTo("username", ParseFriend.getString("friendUsername"))
+                    var userPFP = query3.find()
+
                     var newFriend =
-                        FriendsList(ParseFriend.getString("friendUsername"), R.drawable.img_user)
+                        FriendsList(ParseFriend.getString("friendUsername"), userPFP.first().getString("image").toString())
                     friends.add(newFriend)
                 }
+                Log.e("fetch", ParseFriend.getString("image").toString())
             }}
 
             query2.whereEqualTo("friendUsername", username)
@@ -38,8 +38,12 @@ class FriendFetcher {
             if (!ParseFriends.isNullOrEmpty())
             {
             for(ParseFriend in ParseFriends){
+
                 if (ParseFriend.getString("status") == "friends") {
-                    var newFriend = FriendsList(ParseFriend.getString("username"), R.drawable.img_user)
+                    query4.whereEqualTo("username", ParseFriend.getString("username"))
+                    var userPFP2 = query4.find()
+
+                    var newFriend = FriendsList(ParseFriend.getString("username"), userPFP2.first().getString("image").toString())
                     friends.add(newFriend)
                 }
             }}
