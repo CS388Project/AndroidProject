@@ -48,8 +48,10 @@ class FriendRankAdapter(private val context: Context?, private val friends: Muta
             listener.onItemClick(position)
         }
         Glide.with(context!!)
-                .load(R.drawable.img_user)
-                .into(holder.userPFPImageView)
+                .load(friends[position].rankImage)
+                .override(125, 125)
+                .fitCenter()
+                .into(holder.rankImageView)
 
         holder.friendNameTextView.text = friends[position].friendUsername
         holder.friendRankTextView.text = friends[position].friendRank
@@ -59,7 +61,7 @@ class FriendRankAdapter(private val context: Context?, private val friends: Muta
          val friendNameTextView = itemView.findViewById<TextView>(R.id.friendName)
          val friendRankTextView = itemView.findViewById<TextView>(R.id.friendRankTV)
          val cardView = itemView.findViewById<CardView>(R.id.cardView)
-         val userPFPImageView = itemView.findViewById<ImageView>(R.id.profilePic)
+         val rankImageView = itemView.findViewById<ImageView>(R.id.rankPic)
     }
 
 }
