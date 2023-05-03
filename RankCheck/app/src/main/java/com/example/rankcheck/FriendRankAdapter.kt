@@ -11,7 +11,6 @@ import androidx.cardview.widget.CardView
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.rankcheck.databinding.FriendsCardCellBinding
 import org.w3c.dom.Text
 
 private const val TAG = "FriendRankAdapter"
