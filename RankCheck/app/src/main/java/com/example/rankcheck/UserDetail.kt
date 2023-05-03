@@ -1,5 +1,6 @@
 package com.example.rankcheck
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -62,10 +63,14 @@ class UserDetail: AppCompatActivity(){
         }
         friendsRV = findViewById(R.id.friendsListRV)
         friends = FriendFetcher.getFriends(user)
-        val adapter = FriendListAdapter(this,friends,object:FriendListAdapter.SetOnItemClickListener{
+        val adapter = FriendListAdapter(this, friends,object:FriendListAdapter.SetOnItemClickListener{
             override fun onItemClick(position: Int) {
-
-                Toast.makeText(this@UserDetail, "User Clicked!",Toast.LENGTH_SHORT).show()
+                val intent = Intent(this@UserDetail, UserDetail::class.java)
+                if(friends[position].friendUsername != MainActivity.SESSION_USER){
+                    intent.putExtra(USER_EXTRA, friends[position].friendUsername)
+                    startActivity(intent)
+                    finish()
+                }
 
             }
         })

@@ -16,6 +16,8 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.rankcheck.ImageObj.decodeImage
 import com.example.rankcheck.MainActivity.Companion.SESSION_USER
 import com.parse.ParseObject
 import com.parse.ParseQuery
@@ -64,7 +66,16 @@ class profileFragment: Fragment() {
         query.whereContains("username", userLookup)
         userDB = query.first
         bioTV.text = userDB.getString("bio")
-        profileImage.setImageBitmap(ImageObj.decodeImage(userDB.getString("image").toString()))
+
+        if (userDB.getString("image") != null) {
+            profileImage.setImageBitmap(decodeImage(userDB.getString("image").toString()))
+        }
+        else {
+            Glide.with(this)
+                .load(R.drawable.img_user)
+                .into(profileImage)
+        }
+
         profileImage.setOnClickListener {
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE)
@@ -115,7 +126,6 @@ class profileFragment: Fragment() {
             FriendListAdapter(context, friends, object : FriendListAdapter.SetOnItemClickListener {
                 override fun onItemClick(position: Int) {
 
-                    Toast.makeText(context, "Clicked!", Toast.LENGTH_SHORT).show()
                     val intent = Intent(context, UserDetail::class.java)
                     intent.putExtra(USER_EXTRA, friends[position].friendUsername)
                     context?.startActivity(intent)

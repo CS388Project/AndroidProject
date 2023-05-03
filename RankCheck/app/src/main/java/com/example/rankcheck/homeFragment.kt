@@ -1,6 +1,7 @@
 package com.example.rankcheck
 
 import android.content.Intent
+import android.media.Image
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,15 +12,18 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.parse.ParseObject
 import com.parse.ParseQuery
 import org.w3c.dom.Text
 
 class homeFragment: Fragment()  {
-
     lateinit var leagueRankUser : TextView
+    lateinit var leagueRankUserImage : ImageView
     lateinit var apexRankUser : TextView
+    lateinit var apexRankUserImage : ImageView
     lateinit var rocketRankUser : TextView
+    lateinit var rocketRankUserImage : ImageView
     lateinit var leagueFriendRV: RecyclerView
     lateinit var apexFriendRV: RecyclerView
     lateinit var rocketFriendRV: RecyclerView
@@ -39,12 +43,15 @@ class homeFragment: Fragment()  {
         super.onViewCreated(itemView, savedInstanceState)
 
         leagueRankUser = itemView.findViewById(R.id.leagueRankTV)
+        leagueRankUserImage = itemView.findViewById(R.id.leagueUser)
         apexRankUser = itemView.findViewById(R.id.apexRankTV)
+        apexRankUserImage = itemView.findViewById(R.id.apexUser)
         rocketRankUser = itemView.findViewById(R.id.rocketRankTV)
+        rocketRankUserImage = itemView.findViewById(R.id.rlUser)
 
-        setUserRanks(leagueRankUser, "LeagueUsers")
-        setUserRanks(apexRankUser, "ApexUsers")
-        setUserRanks(rocketRankUser, "RocketUsers")
+        setUserRanks(leagueRankUser, leagueRankUserImage, "LeagueUsers")
+        setUserRanks(apexRankUser, apexRankUserImage, "ApexUsers")
+        setUserRanks(rocketRankUser, rocketRankUserImage, "RocketUsers")
 
         leagueFriendRV = itemView.findViewById(R.id.leagueFriendRV)
         apexFriendRV = itemView.findViewById(R.id.apexFriendRV)
@@ -96,23 +103,137 @@ class homeFragment: Fragment()  {
             query.whereContains("RC_username", username)
             val userFound = query.find()
             if(!userFound.isNullOrEmpty()){
-                var rank = userFound[0].getString("rank")
-                val updatedFriend = FriendRank(username, friend.pfp, rank)
+                var image : Int = 0
+                val rank : String = userFound[0].getString("rank").toString()
+                if(gameTable == "LeagueUsers")
+                    image = leagueSetImage(rank)
+                else if(gameTable == "ApexUsers")
+                    image = apexSetImage(rank)
+                else if(gameTable == "RocketUsers")
+                    image = rocketSetImage(rank)
+                val updatedFriend = FriendRank(username, image, rank)
                 friendRankList.add(updatedFriend)
             }
         }
         return friendRankList
     }
 
-    fun setUserRanks(view : TextView, gameTable : String){
+    fun setUserRanks(rankView : TextView, rankImageView: ImageView, gameTable : String){
         val query = ParseQuery.getQuery<ParseObject>(gameTable)
         query.whereContains("RC_username", MainActivity.SESSION_USER)
         val userFound = query.find()
         if(!userFound.isNullOrEmpty()){
-            view.text = userFound[0].getString("rank")
+            var image : Int = 0
+            val rank : String = userFound[0].getString("rank").toString()
+            rankView.text = rank
+            if(gameTable == "LeagueUsers")
+                image = leagueSetImage(rank)
+            else if(gameTable == "ApexUsers")
+                image = apexSetImage(rank)
+            else if(gameTable == "RocketUsers")
+                image = rocketSetImage(rank)
+            Glide.with(context!!)
+                .load(image)
+                .override(150, 150)
+                .fitCenter()
+                .into(rankImageView)
         }
         else{
-            view.text = "NOT LINKED"
+            rankView.text = "UNLINKED"
+            Glide.with(context!!)
+                .load(R.drawable.xsymbol)
+                .override(150, 150)
+                .fitCenter()
+                .into(rankImageView)
         }
+    }
+
+    fun leagueSetImage(rank : String) : Int {
+        var image = R.drawable.xsymbol
+        if("Iron" in rank)
+            image = R.drawable.league_iron
+        else if("Bronze" in rank)
+            image = R.drawable.league_bronze
+        else if("Silver" in rank)
+            image = R.drawable.league_silver
+        else if("Gold" in rank)
+            image = R.drawable.league_gold
+        else if("Platinum" in rank)
+            image = R.drawable.league_platinum
+        else if("Diamond" in rank)
+            image = R.drawable.league_diamond
+        else if("Master" in rank)
+            image = R.drawable.league_master
+        else if("Grandmaster" in rank)
+            image = R.drawable.league_grandmaster
+        else if("Challenger" in rank)
+            image = R.drawable.league_challenger
+        return image
+    }
+    fun apexSetImage(rank : String) : Int {
+        var image = R.drawable.xsymbol
+        if("Bronze" in rank)
+            image = R.drawable.apex_bronze
+        else if("Silver" in rank)
+            image = R.drawable.apex_silver
+        else if("Gold" in rank)
+            image = R.drawable.apex_gold
+        else if("Platinum" in rank)
+            image = R.drawable.apex_platinum
+        else if("Diamond" in rank)
+            image = R.drawable.apex_diamond
+        else if("Master" in rank)
+            image = R.drawable.apex_master
+        else if("Predator" in rank)
+            image = R.drawable.apex_predator
+        return image
+    }
+    fun rocketSetImage(rank : String) : Int {
+        var image = R.drawable.xsymbol
+        if("Bronze I" in rank)
+            image = R.drawable.rocket_bronze1
+        else if("Bronze II" in rank)
+            image = R.drawable.rocket_bronze2
+        else if("Bronze III" in rank)
+            image = R.drawable.rocket_bronze3
+        else if("Silver I" in rank)
+            image = R.drawable.rocket_silver1
+        else if("Silver II" in rank)
+            image = R.drawable.rocket_silver2
+        else if("Silver III" in rank)
+            image = R.drawable.rocket_silver3
+        else if("Gold I" in rank)
+            image = R.drawable.rocket_gold1
+        else if("Gold II" in rank)
+            image = R.drawable.rocket_gold2
+        else if("Gold III" in rank)
+            image = R.drawable.rocket_gold3
+        else if("Platinum I" in rank)
+            image = R.drawable.rocket_platinum1
+        else if("Platinum II" in rank)
+            image = R.drawable.rocket_platinum2
+        else if("Platinum III" in rank)
+            image = R.drawable.rocket_platinum3
+        else if("Diamond I" in rank)
+            image = R.drawable.rocket_diamond1
+        else if("Diamond II" in rank)
+            image = R.drawable.rocket_diamond2
+        else if("Diamond III" in rank)
+            image = R.drawable.rocket_diamond3
+        else if("Champion I" in rank)
+            image = R.drawable.rocket_champ1
+        else if("Champion II" in rank)
+            image = R.drawable.rocket_champ2
+        else if("Champion III" in rank)
+            image = R.drawable.rocket_champ3
+        else if("Grand Champion I" in rank)
+            image = R.drawable.rocket_grandchamp1
+        else if("Grand Champion II" in rank)
+            image = R.drawable.rocket_grandchamp2
+        else if("Grand Champion III" in rank)
+            image = R.drawable.rocket_grandchamp3
+        else if("Supersonic" in rank)
+            image = R.drawable.rocket_super
+        return image
     }
 }

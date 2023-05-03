@@ -1,6 +1,7 @@
 package com.example.rankcheck
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,9 +48,17 @@ class FriendListAdapter(private val context: Context?, private val friends: Muta
 //            Toast.makeText(context,"Clicked...",Toast.LENGTH_LONG).show()
             listener.onItemClick(position)
         }
-        Glide.with(context!!)
-                .load("@drawable/img_user.xml")
+
+        if (friends[position].pfp.toString() != "null") {
+
+            holder.userPFPImageView.setImageBitmap(ImageObj.decodeImage(friends[position].pfp.toString()))
+        }
+        else {
+
+            Glide.with(context!!)
+                .load(R.drawable.img_user)
                 .into(holder.userPFPImageView)
+        }
 
         holder.friendNameTextView.text = friends[position].friendUsername
 
