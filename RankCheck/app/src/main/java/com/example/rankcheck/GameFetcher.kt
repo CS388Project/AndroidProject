@@ -24,16 +24,16 @@ class GameFetcher{
             R.drawable.league_cover_image,
             R.drawable.apex_legends_image,
             R.drawable.rocket_league_image)
-        fun getGames(): MutableList<DisplayGame> {
+        fun getGames(user : String): MutableList<DisplayGame> {
 
             val leaguequery = ParseQuery.getQuery<ParseObject>("LeagueUsers")
             val rocketquery = ParseQuery.getQuery<ParseObject>("RocketUsers")
             val apexquery = ParseQuery.getQuery<ParseObject>("ApexUsers")
             var games : MutableList<DisplayGame> = ArrayList()
 
-            leaguequery.whereEqualTo("RC_username", MainActivity.SESSION_USER)
-            rocketquery.whereEqualTo("RC_username", MainActivity.SESSION_USER)
-            apexquery.whereEqualTo("RC_username", MainActivity.SESSION_USER)
+            leaguequery.whereEqualTo("RC_username", user)
+            rocketquery.whereEqualTo("RC_username", user)
+            apexquery.whereEqualTo("RC_username", user)
             var league = leaguequery.find()
             var rocket = rocketquery.find()
             var apex = apexquery.find()
@@ -54,6 +54,14 @@ class GameFetcher{
                 games.add(game)
             }
 
+            return games
+        }
+        fun getAllGames(): MutableList<DisplayGame> {
+            var games : MutableList<DisplayGame> = ArrayList()
+            for (i in 0..2) {
+                val game = DisplayGame(gameTitles[i], gameDescription[i], gameLogo[i])
+                games.add(game)
+            }
             return games
         }
     }

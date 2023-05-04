@@ -153,7 +153,7 @@ class profileFragment: Fragment() {
 
 
         gamesRV = itemView.findViewById(R.id.gamesListRV)
-        games = GameFetcher.getGames()
+        games = GameFetcher.getGames(MainActivity.SESSION_USER)
 
         val game_adapter = GameCardViewAdapter(context, games)
         gamesRV.adapter = game_adapter
