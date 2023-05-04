@@ -168,6 +168,7 @@ class DetailActivity : AppCompatActivity() {
                         t: Throwable?
                     ) {
                         Log.e("ERROR: ", "Failed API Request")
+                        Toast.makeText(applicationContext, "Account not found", Toast.LENGTH_LONG).show()
                     }
                 }
         ]
@@ -222,6 +223,7 @@ class DetailActivity : AppCompatActivity() {
                         t: Throwable?
                     ) {
                         Log.e("ERROR: ", "Failed API Request")
+                        Toast.makeText(applicationContext, "Account not found", Toast.LENGTH_LONG).show()
                     }
                 }
         ]
@@ -277,6 +279,7 @@ class DetailActivity : AppCompatActivity() {
                         t: Throwable?
                     ) {
                         Log.e("ERROR: ", "Failed API Request")
+                        Toast.makeText(applicationContext, "Account not found", Toast.LENGTH_LONG).show()
                     }
                 }
         ]
