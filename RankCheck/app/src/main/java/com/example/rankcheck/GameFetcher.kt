@@ -1,5 +1,8 @@
 package com.example.rankcheck
 
+import com.parse.ParseObject
+import com.parse.ParseQuery
+
 class GameFetcher{
     companion object{
         val gameTitles = listOf("League of Legends", "Apex Legends", "Rocket League")
@@ -22,11 +25,35 @@ class GameFetcher{
             R.drawable.apex_legends_image,
             R.drawable.rocket_league_image)
         fun getGames(): MutableList<DisplayGame> {
+
+            val leaguequery = ParseQuery.getQuery<ParseObject>("LeagueUsers")
+            val rocketquery = ParseQuery.getQuery<ParseObject>("RocketUsers")
+            val apexquery = ParseQuery.getQuery<ParseObject>("ApexUsers")
             var games : MutableList<DisplayGame> = ArrayList()
-            for (i in 0..2) {
-                val game = DisplayGame(gameTitles[i], gameDescription[i], gameLogo[i])
+
+            leaguequery.whereEqualTo("RC_username", MainActivity.SESSION_USER)
+            rocketquery.whereEqualTo("RC_username", MainActivity.SESSION_USER)
+            apexquery.whereEqualTo("RC_username", MainActivity.SESSION_USER)
+            var league = leaguequery.find()
+            var rocket = rocketquery.find()
+            var apex = apexquery.find()
+
+            if (!league.isNullOrEmpty())
+            {
+                val game = DisplayGame(gameTitles[0], gameDescription[0], gameLogo[0])
                 games.add(game)
             }
+            if (!apex.isNullOrEmpty())
+            {
+                val game = DisplayGame(gameTitles[1], gameDescription[1], gameLogo[1])
+                games.add(game)
+            }
+            if (!rocket.isNullOrEmpty())
+            {
+                val game = DisplayGame(gameTitles[2], gameDescription[2], gameLogo[2])
+                games.add(game)
+            }
+
             return games
         }
     }
