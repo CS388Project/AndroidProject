@@ -23,7 +23,7 @@ class gamesFragment: Fragment()  {
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
         gamesRV = itemView.findViewById(R.id.gamesFragmentListRv)
-        games = GameFetcher.getGames()
+        games = GameFetcher.getAllGames()
         val adapter = activity?.let { GameAdapter(it, games) }
         gamesRV.adapter = adapter
         gamesRV.layoutManager = LinearLayoutManager(activity)

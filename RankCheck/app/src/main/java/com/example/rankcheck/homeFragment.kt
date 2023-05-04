@@ -190,49 +190,49 @@ class homeFragment: Fragment()  {
     }
     fun rocketSetImage(rank : String) : Int {
         var image = R.drawable.xsymbol
-        if("Bronze I" in rank)
+        if("Bronze I" == rank)
             image = R.drawable.rocket_bronze1
-        else if("Bronze II" in rank)
+        else if("Bronze II" == rank)
             image = R.drawable.rocket_bronze2
-        else if("Bronze III" in rank)
+        else if("Bronze III" == rank)
             image = R.drawable.rocket_bronze3
-        else if("Silver I" in rank)
+        else if("Silver I" == rank)
             image = R.drawable.rocket_silver1
-        else if("Silver II" in rank)
+        else if("Silver II" == rank)
             image = R.drawable.rocket_silver2
-        else if("Silver III" in rank)
+        else if("Silver III" == rank)
             image = R.drawable.rocket_silver3
-        else if("Gold I" in rank)
+        else if("Gold I" == rank)
             image = R.drawable.rocket_gold1
-        else if("Gold II" in rank)
+        else if("Gold II" == rank)
             image = R.drawable.rocket_gold2
-        else if("Gold III" in rank)
+        else if("Gold III" == rank)
             image = R.drawable.rocket_gold3
-        else if("Platinum I" in rank)
+        else if("Platinum I" == rank)
             image = R.drawable.rocket_platinum1
-        else if("Platinum II" in rank)
+        else if("Platinum II" == rank)
             image = R.drawable.rocket_platinum2
-        else if("Platinum III" in rank)
+        else if("Platinum III" == rank)
             image = R.drawable.rocket_platinum3
-        else if("Diamond I" in rank)
+        else if("Diamond I" == rank)
             image = R.drawable.rocket_diamond1
-        else if("Diamond II" in rank)
+        else if("Diamond II" == rank)
             image = R.drawable.rocket_diamond2
-        else if("Diamond III" in rank)
+        else if("Diamond III" == rank)
             image = R.drawable.rocket_diamond3
-        else if("Champion I" in rank)
+        else if("Champion I" == rank)
             image = R.drawable.rocket_champ1
-        else if("Champion II" in rank)
+        else if("Champion II" == rank)
             image = R.drawable.rocket_champ2
-        else if("Champion III" in rank)
+        else if("Champion III" == rank)
             image = R.drawable.rocket_champ3
-        else if("Grand Champion I" in rank)
+        else if("Grand Champion I" == rank)
             image = R.drawable.rocket_grandchamp1
-        else if("Grand Champion II" in rank)
+        else if("Grand Champion II" == rank)
             image = R.drawable.rocket_grandchamp2
-        else if("Grand Champion III" in rank)
+        else if("Grand Champion III" == rank)
             image = R.drawable.rocket_grandchamp3
-        else if("Supersonic" in rank)
+        else if("Supersonic" == rank)
             image = R.drawable.rocket_super
         return image
     }

@@ -78,7 +78,7 @@ class UserDetail: AppCompatActivity(){
         friendsRV.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         gamesRV = findViewById(R.id.gamesListRV)
-        games = GameFetcher.getGames()
+        games = GameFetcher.getGames(user)
         val game_adapter = GameCardViewAdapter(this, games)
         gamesRV.adapter = game_adapter
         gamesRV.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)

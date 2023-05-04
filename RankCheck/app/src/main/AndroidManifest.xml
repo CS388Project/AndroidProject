@@ -23,9 +23,6 @@
             android:name=".UserDetail"
             android:exported="true" />
         <activity
-            android:name=".GamesRV"
-            android:exported="true" />
-        <activity
             android:name=".DetailActivity"
             android:exported="true" />
         <activity
