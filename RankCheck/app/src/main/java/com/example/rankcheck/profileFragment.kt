@@ -1,7 +1,9 @@
 package com.example.rankcheck
 
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
@@ -49,6 +51,7 @@ class profileFragment: Fragment() {
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
 
+        val logoutBt = itemView.findViewById<Button>(R.id.logoutButton)
         profileUsername = itemView.findViewById(R.id.username)
         profileUsername.text = SESSION_USER
         profileImage = itemView.findViewById(R.id.imageUser)
@@ -115,6 +118,18 @@ class profileFragment: Fragment() {
 
             editBioET.visibility = View.GONE
 
+        }
+        logoutBt.setOnClickListener{
+            var sharedpreferences: SharedPreferences
+            // TODO: resolve this issue
+            sharedpreferences = context!!.getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
+            val editor = sharedpreferences.edit()
+            editor.clear()
+            editor.apply()
+            editor.commit()
+            // TODO: send back to login screen
+            val intentLogin = Intent(activity, LoginPage::class.java)
+            startActivity(intentLogin)
         }
 
 
